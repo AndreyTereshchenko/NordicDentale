@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NordicDentale s.r.o.</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="shortcut icon" href="/picture/dental_tooth_icon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+     
+    <style>
+        /* Основные стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            line-height: 1.6;
+            color: #163e68;
+            background-color: #F7F9FC;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: auto;
+            margin: 0 auto;
+            /* padding: 0 20px; */
+        }
+
+        /* Заголовок и навигация */
+        header {
+            background: #fff;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            height: 80px;
+            /* невысокий хедер */
+            display: flex;
+            align-items: center;
+        }
+
+        nav.container {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            /* левая, центр, правая */
+            align-items: center;
+            width: 100%;
+            position: relative;
+            column-gap: 10rem;
+            /* расстояние между колонками (между меню и логотипом) */
+        }
+
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .nav-links.left {
+            justify-content: flex-end;
+            /* тянем к центру */
+        }
+
+        .nav-links.right {
+            justify-content: flex-start;
+            /* тянем к центру */
+        }
+
+
+        .nav-links a {
+            text-decoration: none;
+            color: rgb(20, 10, 0);
+            font-weight: bold;
+            position: relative;
+            /* нужно для ::after */
+            transition: 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            /* расстояние от текста */
+            width: 0;
+            height: 2px;
+            background-color: rgb(20, 10, 0);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-logo {
+            position: relative;
+            display: flex;
+            justify-content: center;
+
+        }
+
+        .logo-circle {
+            width: 250px;
+            height: 250px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding-top: 75px;
+            position: absolute;
+            top: 100%;
+            /* окружность выходит за хедер */
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.5s ease;
+            box-shadow: 10px 0 32px rgba(20, 10, 0, 0.7);
+
+
+        }
+
+        .logo-circle .logo-text:first-of-type {
+            margin-top: 20px;
+            /* увеличиваем расстояние от картинки до текста */
+        }
+
+        .logo-circle img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-top: 20px;
+
+
+        }
+
+        .logo-circle .logo-text {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: rgb(20, 10, 0);
+            font-family: 'Montserrat', sans-serif;
+            margin-top: 5px;
+            opacity: 1;
+            transform: translateY(0);
+            margin: 0;
+            /* убираем стандартные отступы */
+            line-height: 1;
+
+
+        }
+
+        .logo-circle img,
+        .logo-circle .logo-text {
+            transition: all 0.5s ease;
+        }
+
+        /* когда прокручено вниз */
+        header.scrolled .logo-circle {
+            background: transparent;
+            width: auto;
+            height: auto;
+            padding: 0;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(1);
+            flex-direction: row;
+            gap: 0.5rem;
+            opacity: 1;
+            box-shadow: none;
+        }
+
+        /* логотип уменьшается */
+        header.scrolled .logo-circle img {
+            width: 40px;
+            height: 40px;
+            margin: 0;
+            transform: scale(1);
+        }
+
+        header.scrolled .logo-circle .logo-text {
+            font-size: 1rem;
+            margin: 0;
+            display: inline-block;
+            opacity: 1;
+            transform: translateX(5px);
+            font-size: 1.3rem;
+            color: white;
+            text-shadow: 1px 1px 5px rgb(20, 10, 0);
+
+
+        }
+
+        /* Анимация растворения круга */
+        header.scrolled .logo-circle {
+            animation: circleFade 0.6s forwards;
+        }
+
+        @keyframes circleFade {
+
+
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+                box-shadow: none;
+            }
+        }
+
+        @media (max-width: 992px) {
+            nav.container {
+                grid-template-columns: 1fr auto 1fr;
+                column-gap: 2rem;
+            }
+
+            .logo-circle {
+                width: 160px;
+                height: 160px;
+                padding-top: 55px;
+            }
+
+            .logo-circle img {
+                width: 60px;
+                height: 60px;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+        }
+
+        /* Мобильные (burger menu) */
+        @media (max-width: 768px) {
+            nav.container {
+                grid-template-columns: 1fr auto 1fr;
+            }
+
+            .nav-links {
+                display: none;
+                /* скрываем меню */
+            }
+
+            /* бургер */
+            .burger {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 25px;
+                cursor: pointer;
+            }
+
+            .burger div {
+                width: 25px;
+                height: 3px;
+                background: #007bff;
+                margin: 5px;
+                border-radius: 2px;
+            }
+
+            /* при активном бургере показываем меню */
+            nav.active .nav-links {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: #fff;
+                padding: 1rem;
+            }
+
+            nav.active .nav-links a {
+                padding: 0.5rem 0;
+            }
+
+            .logo-circle {
+                width: 140px;
+                height: 140px;
+                padding-top: 45px;
+
+            }
+
+            .logo-circle img {
+                width: 55px;
+                height: 55px;
+            }
+        }
+
+        /* Основной контент */
+        main {
+            margin-top: 0;
+            /* Убираем отступ, чтобы не было конфликта */
+        }
+
+        .section {
+            background: #fff;
+            /* margin: 2rem 0; */
+            padding: 3rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+            scroll-margin-top: 80px;
+        }
+
+        .section:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .section:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .section:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+
+        .section:nth-child(5) {
+            animation-delay: 0.8s;
+        }
+
+        .section:nth-child(6) {
+            animation-delay: 1.0s;
+        }
+
+        /* Добавлено для новой секции */
+        @keyframes fadeInUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        h1,
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: rgb(90, 45, 0);
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        
+
+        h2::after {
+            content: '';
+            width: 80px;
+            height: 3px;
+            background-color: rgb(90, 45, 0);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* Секция Hero */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            /* чтобы фото тянулось на весь экран */
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            /* контент справа */
+            color: #fff;
+            z-index: 0;
+            /* контент выше фона */
+            overflow: hidden;
+
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: url("/picture/ordinacie1.jpg") center/cover no-repeat;
+            z-index: 0;
+            /* фото на заднем плане */
+        }
+
+        .hero::before {
+
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to left,
+                    rgba(135, 85, 15, 0.95) 30%,
+                    rgba(0, 0, 0, 0) 100%);
+            z-index: 1;
+            /* градиент поверх фото */
+            pointer-events: none;
+            /* чтобы не мешал кликам */
+        }
+
+        .hero>* {
+            position: relative;
+            z-index: 2;
+            /* текст выше всего */
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            position: relative;
+            z-index: 2;
+            max-width: 50%;
+            padding: 2rem 4rem;
+            border-radius: 10px;
+            /* чтобы выглядело аккуратно */
+        }
+
+        .hero-content p:first-of-type {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1s ease forwards 0.3s;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: #fff;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1s ease forwards 0.6s;
+        }
+
+        .hero-content p:last-of-type {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1s ease forwards 0.9s;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* CTA */
+        .cta-button {
+            display: inline-block;
+            padding: 0.9rem 2rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #fff;
+            background: linear-gradient(to bottom, rgb(90, 45, 0), rgb(58, 29, 0));
+            
+            border-radius: 30px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1s ease forwards 1.2s;
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(to bottom, rgb(110, 55, 0), rgb(70, 35, 0));
+
+            transform: translateY(-3px);
+            /* чуть выше */
+
+        }
+
+        .cta-button:active {
+            transform: translateY(4px);
+            /* кнопка уходит вниз */
+            box-shadow: 0 2px 0 rgb(35, 18, 0), 3px 5px 12px rgba(20, 10, 0, 0.5);
+            background: linear-gradient(to bottom, rgb(58, 29, 0), rgb(90, 45, 0));
+            /* свет снизу */
+        }
+
+        /* Анимации */
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Мобилка */
+        @media (max-width: 992px) {
+            .hero {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .hero-content {
+                max-width: 90%;
+                padding: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Секция "О нас" */
+.about-slider-section {
+  position: relative;
+  width: 100%;
+  height: 80vh; /* или 100vh для полного экрана */
+  overflow: hidden;
+}
+
+.about-slider {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* Градиент через весь текст и заходит на фото */
+.about-slider::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 70%; /* ширина градиента */
+  height: 100%;
+  background: linear-gradient(to right,
+              rgba(135,85,15,0.95) 0%,   /* насыщенный цвет слева */
+              rgba(135,85,15,0.80) 30%, /* полностью через текст */
+              rgba(0,0,0,0) 100%);        /* плавно исчезает на фото */
+  pointer-events: none;
+  z-index: 1; /* под текстом, над фото */
+}
+.text-container {
+  flex: 1 1 40%;
+  position: relative;
+  z-index: 2; /* текст выше градиента */
+  color: rgba(135,85,15,0.80);
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color:#ffffff;
+  font-size: 1.5rem;
+  
+}
+.text-container h2{
+    color:#ffffff;
+    font-size: 3rem;
+    font-weight: 800;
+       
+    
+}
+
+.text-slide {
+  display: none;
+  opacity: 0;
+     
+}
+
+.text-slide.active {
+  display: block;
+  opacity: 1;
+}
+
+.image-container {
+  flex: 1 1 60%;
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+.image-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease;
+
+  /* маска: слева фото растворяется */
+  -webkit-mask-image: linear-gradient(to right,
+                    rgba(0,0,0,0) 0%,   /* полностью прозрачное */
+                    rgba(0,0,0,1) 20%); /* полностью видно */
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: cover;
+
+  mask-image: linear-gradient(to right,
+                    rgba(0,0,0,0) 0%,
+                    rgba(0,0,0,1) 20%);
+  mask-repeat: no-repeat;
+  mask-size: cover;
+}
+
+.image-container img.active {
+  opacity: 1;
+}
+
+.slider-buttons {
+  position: absolute;
+  bottom: 2rem;          /* отступ снизу */
+  left: 50%;             /* ставим по центру */
+  transform: translateX(-50%); /* корректируем по центру */
+  display: flex;
+  gap: 1rem;
+  z-index: 3;  
+          /* поверх всего */
+}
+
+
+.slider-buttons button {
+  width: 45px;   /* ширина = высоте */
+  height: 45px;
+  border-radius: 50%;    /* делаем круг */
+  border: none;
+background: linear-gradient(to bottom, rgb(90, 45, 0), rgb(58, 29, 0));
+transform: translateY(-3px);
+  color: rgba(255, 255, 255, 0.8);        /* цвет стрелок */
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease; 
+  font-weight: 600;  /* максимально жирные стрелки */
+  font-size: 1.5rem; /* и можно чуть увеличить размер */
+}
+
+
+        .slider-buttons button:active {
+            transform: translateY(4px);
+            /* кнопка уходит вниз */
+            box-shadow: 0 2px 0 rgb(35, 18, 0), 3px 5px 12px rgba(20, 10, 0, 0.5);
+            background: linear-gradient(to bottom, rgb(58, 29, 0), rgb(90, 45, 0));
+            /* свет снизу */
+        }
+
+.slider-buttons button:hover {
+   background: linear-gradient(to bottom, rgb(110, 55, 0), rgb(70, 35, 0));
+  transform: translateY(-3px);
+}
+
+@media (max-width: 992px) {
+  .about-slider {
+    flex-direction: column;
+  }
+  .text-container, .image-container {
+    flex: 1 1 100%;
+  }
+  .image-container {
+    min-height: 250px;
+  }
+}
+
+
+        /* Секция "Услуги" */
+        #services {
+            padding: 2rem 2rem;
+        }
+
+        #services h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: rgb(90, 45, 0);
+        }
+
+        .services-grid {
+            display: grid;
+            gap: 2.5rem;
+            grid-template-columns: repeat(1, 1fr);
+        }
+        @media (min-width: 768px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+                /* 2 карточки */
+            }
+        }
+
+        /* десктоп */
+        @media (min-width: 1200px) {
+            .services-grid {
+                grid-template-columns: repeat(6, 1fr);
+                /* 3 карточки */
+            }
+        }
+
+
+        /* Карточки */
+        .service-card {
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            box-shadow: 0 -6px 10px -6px rgba(90,45,0,0.15);
+        }
+
+
+        .service-card::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 4px;            
+            background-color: rgb(90, 45, 0);            
+            transition: width 0.3s ease;
+        }
+        .price-card:hover {
+    transform: scale(1.05); /* увеличиваем размер при наведении */
+}
+
+        .service-card:hover::after {
+            width: 100%;
+            /* растягиваем полоску на всю ширину */
+        }
+
+        /* Иконка */
+        .service-card i {
+            font-size: 3rem;
+            color: rgb(90, 45, 0);
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 3px rgba(20, 10, 0, 0.3);
+        }
+
+        /* Заголовок */
+        .service-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: rgb(58, 29, 0);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Текст */
+        .service-card p {
+            font-size: 1.2rem;
+            color: #444;
+            line-height: 1.6;
+        }
+
+     /* Секция "Цены" */
+#prices {
+    padding: 2rem 2rem;
+}
+
+#prices h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: rgb(90, 45, 0);
+}
+
+/* Сетка карточек */
+.prices-grid {
+    display: grid;
+    gap: 2.5rem;
+    grid-template-columns: repeat(1, 1fr); /* мобилки - 1 в ряд */
+}
+
+/* Планшет */
+@media (min-width: 768px) {
+    .prices-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 карточки */
+    }
+}
+
+/* Средние экраны */
+@media (min-width: 1024px) {
+    .prices-grid {
+        grid-template-columns: repeat(4, 1fr); /* 4 карточки */
+    }
+}
+
+/* Десктоп (опционально, можно оставить 4) */
+@media (min-width: 1440px) {
+    .prices-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Карточки */
+.price-card {
+    padding: 2rem;    
+    text-align: center;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    background-color: #fff;
+    box-shadow: 0 -6px 10px -6px rgba(90,45,0,0.15);
+   
+}
+
+.price-card::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 4px;
+    background-color: rgb(90, 45, 0);   
+    transition: width 0.3s ease;
+}
+
+
+
+.price-card:hover::after {
+    width: 100%;
+}
+
+
+
+.price-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(58, 29, 0);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.price-card .price {
+    font-size: 1.2rem;
+    color: rgb(90, 45, 0);
+    font-weight: bold;
+}
+
+
+
+        .map-container {
+            height: 400px;
+            width: 60%;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            margin: 2rem 0;
+        }
+
+        .transport-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .transport-card {
+            background: #f5f5f5;
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 5px solid #007bff;
+            transition: all 0.3s ease;
+        }
+
+        .transport-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .transport-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #007bff;
+        }
+
+        .location-info {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .location-info .address-card {
+            flex: 1;
+            background: #f5f5f5;
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 5px solid #007bff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .address-header {
+            display: flex;
+            align-items: center;
+            
+            gap: 10px;
+            
+            margin-bottom: 1rem;
+            color: #007bff;
+
+        }
+
+        .address-header i {
+            color: #007bff;
+            font-size: 1.5rem;
+        }
+
+        .location-info .location-image {
+            flex: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .location-info .location-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Стили для секции контактов */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            text-align: center;
+            padding: 1.5rem;
+            background: #f5f5f5;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border-left: 5px solid #007bff;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-card h4 {
+            color: #007bff;
+        }
+
+        /* Подвал */
+        footer {
+            background: rgba(17, 17, 17, 0.98);
+            color: #007bff;
+            /* Изменено на цвет основного текста */
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+            box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.1);
+            /* Изменено на более светлую тень */
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: #007bff;
+            transition: 0.3s;
+        }
+
+        /* Медиа-запросы для адаптивности */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            /* .services-grid,
+            .transport-info,
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content,
+            .location-info {
+                flex-direction: column;
+            }
+
+            .location-info .location-image {
+                height: 200px;
+            } */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="container">
+            <ul class="nav-links left">
+                <li><a href="#home">Domů</a></li>
+                <li><a href="#about">O stomatologii</a></li>
+                <li><a href="#services">Služby</a></li>
+            </ul>
+
+            <div class="nav-logo">
+                <div class="logo-circle">
+                    <img src="/picture/logo 2.png" alt="NordicDentale logo">
+                    <span class="logo-text">NordicDental</span><span class="logo-text">s.r.o.</span>
+                </div>
+            </div>
+
+            <ul class="nav-links right">
+                <li><a href="#prices">Ceník</a></li>
+                <li><a href="#location">Poloha</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+
+            <!-- бургер -->
+            <div class="burger" onclick="document.querySelector('nav').classList.toggle('active')">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section id="home" class="hero">
+            <div class="swiper hero-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" style="background-image: url('/picture/ordinacie1.jpg')"></div>
+                </div>
+                <!-- Навигация -->
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content">
+                <p>Svěží úsměv s</p>
+                <h1>Nordic Dental s.r.o.</h1>
+                <p>Moderní a přátelská stomatologická ordinace v Mostě. Nabízíme kompletní péči pro celou rodinu s
+                    důrazem na pohodlí a preciznost.</p>
+                <a href="#contact" class="cta-button">Objednat se</a>
+            </div>
+        </section>
+        
+
+        <section id="services" class="section">
+            <div class="container">
+                <h2>Naše služby</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fas fa-tooth"></i>
+                        <h3>Preventivní péče</h3>
+                        <p>Pravidelné kontroly, dentální hygiena, fluoridace a poradna pro správnou péči o zuby.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-crown"></i>
+                        <h3>Konzervativní stomatologie</h3>
+                        <p>Léčba kazů, výplně, endodoncie (léčba kořenových kanálků) a ošetření citlivých zubů.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-fill-drip"></i>
+                        <h3>Estetická stomatologie</h3>
+                        <p>Bělení zubů, veneery, estetické výplně a kompletní rekonstrukce úsměvu.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-x-ray"></i>
+                        <h3>Digitální diagnostika</h3>
+                        <p>Přesná diagnostika pomocí moderního digitálního rentgenu.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-smile-beam"></i>
+                        <h3>Protetika</h3>
+                        <p>Zubní náhrady, korunky, můstky, snímatelné a fixní protézy vyrobené na míru.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-first-aid"></i>
+
+                        <h3>Chirurgická stomatologie</h3>
+                        <p>Extrakce zubů, ošetření implantátů, chirurgie parodontu a další chirurgické výkony.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+<section id="about" class="about-slider-section">
+  <div class="about-slider">
+    <!-- Текстовая часть -->
+    <div class="text-container">
+      <div class="text-slide active">
+        <h2>O moderní stomatologii</h2>
+        <p>Současná stomatologie představuje fascinující spojení vědy, technologie a umění. V naší klinice využíváme nejnovější digitální technologie.</p>
+      </div>
+      <div class="text-slide">
+        <h2>Digitální zobrazování</h2>
+        <p>Digitální zobrazování nám pomáhá odhalit problémy v raných stádiích, zatímco laserová terapie umožňuje méně invazivní zákroky.</p>
+      </div>
+      <div class="text-slide">
+        <h2>Naše filozofie</h2>
+        <p>Naše filozofie spočívá v preventivní péči a zachování přírodních zubů kdykoli je to možné. Transparentní komunikace a férové ceny jsou pro nás klíčové.</p>
+      </div>
+
+      <!-- Кнопки управления -->
+      <div class="slider-buttons">
+        <button class="prev"><i class="fas fa-chevron-left"></i></button>
+        <button class="next"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+
+    <!-- Фото -->
+    <div class="image-container">
+      <img class="image-slide active" src="/picture/ordinacie1.jpg" alt="ordinace 1">
+      <img class="image-slide" src="/picture/ordinacie2.jpg" alt="ordinace 2">
+      <img class="image-slide" src="/picture/ordinacie3.jpg" alt="ordinace 3">
+    </div>
+  </div>
+</section>
+
+    <!-- Навигация -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+</section>
+
+
+
+
+     <section id="prices" class="section">
+    <div class="container">
+        <h2>Ceník služeb</h2>
+        <div class="prices-grid">
+            <div class="price-card-wrapper">
+    <div class="price-card-back"></div> <!-- подложка -->
+    <div class="price-card">
+        <h3>Preventivní prohlídka</h3>
+        <p class="price">500 Kč</p>
+    </div>
+</div>
+            <div class="price-card">
+                <h3>Dentální hygiena</h3>
+                <p class="price">1 500 Kč</p>
+            </div>
+            <div class="price-card">
+                <h3>Kompozitní výplň</h3>
+                <p class="price">1 800 Kč</p>
+            </div>
+            <div class="price-card">
+                <h3>Endodontické ošetření</h3>
+                <p class="price">3 500 Kč</p>
+            </div>
+            <div class="price-card">
+                <h3>Keramická koruna</h3>
+                <p class="price">12 000 Kč</p>
+            </div>
+            <div class="price-card">
+                <h3>Zubní implantát</h3>
+                <p class="price">25 000 Kč</p>
+            </div>
+            <div class="price-card">
+                <h3>Profesionální bělení</h3>
+                <p class="price">8 000 Kč</p>
+            </div>
+            <div class="price-card">
+                <h3>Porcelánový veneer</h3>
+                <p class="price">15 000 Kč</p>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 2rem; color: #888; font-style: italic;">
+            * Ceny jsou orientační. Přеsnou cenu sdělíme po vyšetření. Přijímáme pojišťovny VZP, ČPZP, OZP.
+        </p>
+    </div>
+</section>
+
+<section class="about-like-location-section">
+
+
+
+
+        <section id="location" class="section">
+            <div class="container">
+                <h2>Kde nás najdete</h2>
+                <div class="location-info">
+                    <div class="location-image">
+                        <img src="https://d48-a.sdn.cz/d_48/c_img_m1_A/nOyK4m0UavWRqggwxsVZ/0b90.jpeg?fl=res,600,400,3,ffffff|webp,75"
+                            alt="Vnější pohled na budovu kliniky NordicDentale">
+                    </div>
+                    <div class="address-card">
+                        <div class="address-header">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h3 class="address-title">Přesná adresa</h3>
+                        </div>
+                        <p style="font-size: 1.1rem;"><strong>NordicDentale - Stomatologická klinika</strong></p>
+                        <p>Tyršova 3460, 434 01 Most</p>
+                        <p style="margin-top: 1rem;">
+                            <strong>Telefon:</strong> +420 777 034 046<br>
+                            <strong>Email:</strong> info@NordicDentale.cz<br>
+                            <strong>Ordinační hodiny:</strong> Po-Pá 7:30-16:00
+                            <br> Bolesti budou ošetřeny od 7:30 do 8:00, dle časové vytíženosti pracoviśtě,
+                            pak je čas vyhrazen pro objednané pacienty.
+                        </p>
+                    </div>
+                    
+                </div>
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1268.9519717364292!2d13.63150177433366!3d50.49874549436672!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470a21cc2b7ae727%3A0x9c451269f686543!2sTyr%C5%A1ova%203460%2C%20434%2001%20Most%201!5e0!3m2!1sru!2scz!4v1758033977793!5m2!1sru!2scz"
+                        width="100%" height="100%" style="border:0; display:block;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                <h3 style="margin-top: 3rem; margin-bottom: 2rem; text-align: center; color: #007bff;">Jak se k nám
+                    dostanete</h3>
+                <div class="transport-info">
+                    <div class="transport-card">
+                        <div class="address-header">
+                            <i class="fas fa-bus"></i>
+                            <h3>Autobus</h3>
+                        </div>
+                        <p><strong>Linky:</strong> 25</p>
+                        <p><strong>Zastávka:</strong> Most, Báňská</p>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: #888;">Zastávka je 30 m od kliniky.</p>
+                    </div>
+                    <div class="transport-card">
+                        <div class="address-header">
+                            <i class="fas fa-parking"></i>
+                            <h3>Parkování</h3>
+                        </div>
+
+                        <p><strong>Možnost:</strong> Parkování přímo u budovy</p>
+                        <p><strong>Alternativa:</strong> Veřejné parkoviště v okolí</p>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: #888;">Adresa: Tyršova 3460, 434 01 Most
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="container">
+                <h2>Kontaktujte nás</h2>
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <h4><i class="fas fa-phone"></i> Telefon</h4>
+                        <p>+420 222 123 456</p>
+                        <p>+420 777 987 654</p>
+                    </div>
+                    <div class="contact-card">
+                        <h4><i class="fas fa-envelope"></i> Email</h4>
+                        <p>info@NordicDentale.cz</p>
+                        <p>rezervace@NordicDentale.cz</p>
+                    </div>
+                    <div class="contact-card">
+                        <h4><i class="fas fa-clock"></i> Ordinační hodiny</h4>
+                        <p>Po-Pá: 8:00-19:00</p>
+                        <p>So: 9:00-15:00</p>
+                        <p>Ne: zavřeno</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>
+            © 2025 NordicDentale s.r.o. - Stomatologická klinika. Všechna práva vyhrazena.
+        </p>
+        </div>
+    </footer>
+
+    <script>
+ document.addEventListener('DOMContentLoaded', () => {
+  const textSlides = document.querySelectorAll('.text-slide');
+  const imageSlides = document.querySelectorAll('.image-slide');
+  const prevBtn = document.querySelector('.prev');
+  const nextBtn = document.querySelector('.next');
+
+  let currentIndex = 0;
+  let interval;
+
+  function showSlide(index) {
+    textSlides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+    imageSlides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+  }
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % textSlides.length;
+    showSlide(currentIndex);
+  }
+
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + textSlides.length) % textSlides.length;
+    showSlide(currentIndex);
+  }
+
+  nextBtn.addEventListener('click', () => { nextSlide(); resetInterval(); });
+  prevBtn.addEventListener('click', () => { prevSlide(); resetInterval(); });
+
+  function startInterval() { interval = setInterval(nextSlide, 5000); }
+  function resetInterval() { clearInterval(interval); startInterval(); }
+
+  showSlide(currentIndex);
+  startInterval();
+});
+        // Плавная прокрутка для навигационных ссылок
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80, // Вычитаем высоту шапки
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        // Анимация при скролле
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+        // Эффекты наведения для карточек
+        document.querySelectorAll('.service-card, .transport-card, .contact-card').forEach(card => {
+            card.addEventListener('mouseenter', function () {
+                this.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+            card.addEventListener('mouseleave', function () {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+        // при скролле добавляем/убираем класс .scrolled
+        window.addEventListener("scroll", () => {
+            const header = document.querySelector("header");
+            if (window.scrollY > 50) {
+                header.classList.add("scrolled");
+            } else {
+                header.classList.remove("scrolled");
+            }
+        });
+
+
+        // Функциональность мобильного меню
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        mobileMenu.addEventListener('click', () => {
+            const isVisible = navLinks.style.display === 'flex';
+            navLinks.style.display = isVisible ? 'none' : 'flex';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '100%';
+            navLinks.style.left = '0';
+            navLinks.style.width = '100%';
+            navLinks.style.background = '#1e1e1e';
+            navLinks.style.padding = '1rem';
+            navLinks.style.borderRadius = '0 0 15px 15px';
+        });
+
+ 
+    </script>
+</body>
