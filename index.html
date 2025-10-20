@@ -764,16 +764,21 @@
 
         @media (min-width: 768px) {
             .services-grid {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(2, 1fr);
                 /* 2 карточки */
             }
         }
 
         /* десктоп */
-        @media (min-width: 1200px) {
+        @media (min-width:  1024px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+                /* 3 карточки */
+            }
+        }
+         @media (min-width: 1440px) {
             .services-grid {
                 grid-template-columns: repeat(6, 1fr);
-                /* 3 карточки */
             }
         }
 
@@ -784,8 +789,9 @@
             text-align: center;
             transition: all 0.3s ease;
             display: flex;
-            flex-direction: column;
+            flex-direction: column;           
             justify-content: flex-start;
+            position: relative;
             box-shadow: 0 -6px 10px -6px rgba(90, 45, 0, 0.15);
         }
 
@@ -798,7 +804,7 @@
             width: 0;
             height: 4px;
             background-color: rgb(90, 45, 0);
-            transition: width 0.3s ease;
+            transition: width 0.3s ease;            
         }
 
         .price-card:hover {
@@ -852,7 +858,7 @@
             display: grid;
             gap: 2.5rem;
             grid-template-columns: repeat(1, 1fr);
-            /* мобилки - 1 в ряд */
+            
         }
 
         /* Планшет */
@@ -887,7 +893,6 @@
             flex-direction: column;
             justify-content: center;
             position: relative;
-            background-color: #fff;
             box-shadow: 0 -6px 10px -6px rgba(90, 45, 0, 0.15);
 
         }
@@ -1086,9 +1091,6 @@
             color: rgb(58, 29, 0);
         }
 
-
-
-
         .transport-info {
             flex: 1 1 40%;
             display: flex;
@@ -1102,6 +1104,7 @@
             height: 450px;
             overflow: hidden;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+          margin-top: 50px;
         }
 
         /* Заголовок */
@@ -1120,6 +1123,7 @@
             margin-bottom: 1.5rem;
             box-shadow: 0 -6px 10px -6px rgba(90, 45, 0, 0.15);
             transition: transform 0.3s ease;
+            
         }
 
         .transport-card::after {
@@ -1180,6 +1184,7 @@
             .map-container {
                 order: 1;
                 height: 300px;
+                
             }
 
             .map-title {
@@ -1255,11 +1260,11 @@
             font-size: 2.2rem;
             text-align: center;
             margin-bottom: 1rem;
-            color: #fff;
+            color: #ffffff;
         }
 
         #contact p {
-            color: #fff;
+            color: rgb(90, 45, 0);
         }
 
 
@@ -1272,11 +1277,12 @@
         }
 
         .contact-card {
-            background: #ffffff00;
+            background: #ffffff;
             padding: 1.5rem;
             margin-bottom: 1.5rem;
             box-shadow: 0 0 15px 3px rgba(90, 45, 0, 0.3);
             transition: transform 0.3s ease;
+            
         }
 
         .contact-card ::after {
@@ -1297,7 +1303,7 @@
 
 
         .contact-card h4 {
-            color: white;
+            color: rgb(90, 45, 0);
         }
 
        
@@ -1340,7 +1346,7 @@ footer { background:#fff; color:rgb(90,45,0); text-align:center; padding:2rem 0;
 
 
 @media (max-width: 1024px) {
-  .container { padding: 0 2rem; }
+ 
 
   .hero-content {
     max-width: 70%;
@@ -1351,9 +1357,7 @@ footer { background:#fff; color:rgb(90,45,0); text-align:center; padding:2rem 0;
     font-size: 2.5rem;
   }
 
-  .services-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+
 
   .about-slider-section {
     flex-direction: column;
@@ -1513,13 +1517,10 @@ footer { background:#fff; color:rgb(90,45,0); text-align:center; padding:2rem 0;
         <section id="prices" class="section">
             <div class="container">
                 <h2>Ceník služeb</h2>
-                <div class="prices-grid">
-                    <div class="price-card-wrapper">
-                        <div class="price-card-back"></div> <!-- подложка -->
-                        <div class="price-card">
+                <div class="prices-grid">                   
+                            <div class="price-card">
                             <h3>Preventivní prohlídka</h3>
-                            <p class="price">500 Kč</p>
-                        </div>
+                            <p class="price">500 Kč</p>                        
                     </div>
                     <div class="price-card">
                         <h3>Dentální hygiena</h3>
