@@ -476,19 +476,7 @@
             margin-bottom: 1rem;
         }
 
-
-
-        h2::after {
-            content: '';
-            width: 80px;
-            height: 3px;
-            background-color: rgb(90, 45, 0);
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
-        }
+      
 
         /* Секция Hero */
         .hero {
@@ -652,7 +640,7 @@
         .about-slider-section {
             position: relative;
             width: 100%;
-            height: 80vh;
+            height: 91vh;
             overflow: hidden;
         }
 
@@ -757,7 +745,7 @@
 
         .slider-buttons {
             position: absolute;
-            bottom: 2rem;
+            bottom: 0.5rem;
             /* отступ снизу */
             left: 50%;
             /* ставим по центру */
@@ -806,13 +794,56 @@
 
         @media (max-width: 992px) {
             .about-slider {
-                flex-direction: column;
-            }
+                flex-direction: column;}
+    .about-slider::before {
+    width: 100%;
+    height: 70%;
+    background: linear-gradient(
+      to bottom,
+      rgba(135, 85, 15, 0.95) 0%,
+      rgba(135, 85, 15, 0.80) 60%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    }
+    .slider-buttons{
+            bottom: -15.5rem;
+        }
+    .slider-buttons button{
+        background: linear-gradient(to bottom, rgb(90, 45, 0, 0.3), rgb(58, 29, 0, 0.3));
+    }
+    .slider-buttons button:active {
+            transform: translateY(4px);
+            /* кнопка уходит вниз */
+            
+            background: linear-gradient(to bottom, rgb(58, 29, 0, ), rgb(90, 45, 0));
+            /* свет снизу */
+        }
 
-            /* .text-container,
-            .image-container {
-                flex: 1 1 100%;
-            } */
+        .slider-buttons button:hover {
+            background: linear-gradient(to bottom, rgb(110, 55, 0, 0.5), rgb(70, 35, 0, 0.5));
+            transform: translateY(-3px);
+        }   
+        .image-container img {
+            -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,    /* низ — прозрачный */
+    rgba(0, 0, 0, 1) 25%,   /* к середине — полностью видно */
+    rgba(0, 0, 0, 1) 100%   /* верх — полностью видим */
+);
+-webkit-mask-repeat: no-repeat;
+-webkit-mask-size: cover;
+
+mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 25%,
+    rgba(0, 0, 0, 1) 100%
+);
+mask-repeat: no-repeat;
+mask-size: cover;
+        }
+
+           
 
             .image-container {
                 min-height: 250px;
@@ -923,89 +954,58 @@
         }
 
         /* Секция "Цены" */
-        #prices {
-            padding: 2rem 2rem;
-        }
+      .price-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 600px;
+  text-align: left;
+  font-family: 'Montserrat', sans-serif;
+  overflow: hidden;
+  max-height: calc(2.5rem * 10); /* показываем 10 строк */
+  transition: max-height 0.6s ease;
+}
 
-        #prices h2 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.2rem;
-            text-align: center;
-            margin-bottom: 1rem;
-            color: rgb(90, 45, 0);
-        }
+.price-list li {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid rgba(90, 45, 0, 0.1);
+  font-size: 1.1rem;
+  color: #333;
+  background: rgba(90, 45, 0, 0.03);
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+  transition: background 0.3s ease;
+}
 
-        /* Сетка карточек */
-        .prices-grid {
-            display: grid;
-            gap: 2.5rem;
-            grid-template-columns: repeat(1, 1fr);
+.price-list li strong {
+  color: rgb(90, 45, 0);
+}
 
-        }
+.price-list li:hover {
+  background: rgba(90, 45, 0, 0.1);
+}
 
-        /* Планшет */
-        @media (min-width: 768px) {
-            .prices-grid {
-                grid-template-columns: repeat(2, 1fr);
-                /* 2 карточки */
-            }
-        }
+.price-list.expanded {
+  max-height: 1000px; /* достаточно большое значение */
+}
 
-        /* Средние экраны */
-        @media (min-width: 1024px) {
-            .prices-grid {
-                grid-template-columns: repeat(4, 1fr);
-                /* 4 карточки */
-            }
-        }
+.show-more-btn {
+  display: block;
+  margin: 1.5rem auto 0;
+  background: transparent;
+  border: 2px solid rgb(90, 45, 0);
+  color: rgb(90, 45, 0);
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
 
-        /* Десктоп (опционально, можно оставить 4) */
-        @media (min-width: 1440px) {
-            .prices-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-
-        /* Карточки */
-        .price-card {
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
-            box-shadow: 0 -6px 10px -6px rgba(90, 45, 0, 0.15);
-
-        }
-
-        .price-card::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 0;
-            height: 4px;
-            background-color: rgb(90, 45, 0);
-            transition: width 0.3s ease;
-        }
-
-        .price-card:hover::after {
-            width: 100%;
-        }
-
-        .price-card h3 {
-            font-family: 'Montserrat', sans-serif;
-            color: rgb(58, 29, 0);
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-        }
-
-        .price-card .price {
-            font-size: 1.2rem;
-            color: rgb(90, 45, 0);
-            font-weight: bold;
-        }
+.show-more-btn:hover {
+  background: rgba(90, 45, 0, 0.1);
+}
 
 
         /* Секция "Где нас найти" */
@@ -1149,6 +1149,21 @@
                         rgba(135, 85, 15, 0.85) 0%,
                         rgba(0, 0, 0, 0) 100%);
             }
+             .location-image img {
+                  -webkit-mask-image: linear-gradient(to top,
+                    rgba(0, 0, 0, 0) 0%,
+                    /* прозрачное — край справа */
+                    rgba(0, 0, 0, 1) 25%);
+            /* полностью видно — остальная часть */
+            -webkit-mask-repeat: no-repeat;
+            -webkit-mask-size: cover;
+
+            mask-image: linear-gradient(to top,
+                    rgba(0, 0, 0, 0) 0%,
+                    rgba(0, 0, 0, 1) 25%);
+            mask-repeat: no-repeat;
+            mask-size: cover;
+             }
         
 }
         /* Map */
@@ -1264,13 +1279,14 @@
              .map-content {
                 flex-direction: row-reverse;
             }  
-
             
             .transport-info {
                 order: 2;
                 text-align: center;
                 width: 80%;
             }
+
+           
 
             
 
@@ -1479,7 +1495,7 @@
 
             .about-slider-section {
                 flex-direction: column;
-                height: auto;
+                
             }
 
             .text-container,
@@ -1504,9 +1520,9 @@
     <header>
         <nav class="container">
             <ul class="nav-links left">
-                <li><a href="#home" class="home-link">Domů</a></li>
-                <li><a href="#about">O stomatologii</a></li>
+                <li><a href="#home" class="home-link">Domů</a></li>                
                 <li><a href="#services">Služby</a></li>
+                <li><a href="#about">O stomatologii</a></li>
             </ul>
 
             <div class="nav-logo">
@@ -1624,48 +1640,32 @@
         </section>
 
 
-        <section id="prices" class="section">
-            <div class="container">
-                <h2>Ceník služeb</h2>
-                <div class="prices-grid">
-                    <div class="price-card">
-                        <h3>Preventivní prohlídka</h3>
-                        <p class="price">500 Kč</p>
-                    </div>
-                    <div class="price-card">
-                        <h3>Dentální hygiena</h3>
-                        <p class="price">1 500 Kč</p>
-                    </div>
-                    <div class="price-card">
-                        <h3>Kompozitní výplň</h3>
-                        <p class="price">1 800 Kč</p>
-                    </div>
-                    <div class="price-card">
-                        <h3>Endodontické ošetření</h3>
-                        <p class="price">3 500 Kč</p>
-                    </div>
-                    <div class="price-card">
-                        <h3>Keramická koruna</h3>
-                        <p class="price">12 000 Kč</p>
-                    </div>
-                    <div class="price-card">
-                        <h3>Zubní implantát</h3>
-                        <p class="price">25 000 Kč</p>
-                    </div>
-                    <div class="price-card">
-                        <h3>Profesionální bělení</h3>
-                        <p class="price">8 000 Kč</p>
-                    </div>
-                    <div class="price-card">
-                        <h3>Porcelánový veneer</h3>
-                        <p class="price">15 000 Kč</p>
-                    </div>
-                </div>
-                <p style="text-align: center; margin-top: 2rem; color: #888; font-style: italic;">
-                    * Ceny jsou orientační. Přеsnou cenu sdělíme po vyšetření. Přijímáme pojišťovny VZP, ČPZP, OZP.
-                </p>
-            </div>
-        </section>
+       <section id="prices" class="section">
+  <div class="container">
+    <h2>Ceník služeb</h2>
+
+    <ul class="price-list">
+      <li><strong>Preventivní prohlídka</strong> — 500 Kč</li>
+      <li><strong>Dentální hygiena</strong> — 1 500 Kč</li>
+      <li><strong>Kompozitní výplň</strong> — 1 800 Kč</li>
+      <li><strong>Endodontické ošetření</strong> — 3 500 Kč</li>
+      <li><strong>Keramická koruna</strong> — 12 000 Kč</li>
+      <li><strong>Zubní implantát</strong> — 25 000 Kč</li>
+      <li><strong>Profesionální bělení</strong> — 8 000 Kč</li>
+      <li><strong>Porcelánový veneer</strong> — 15 000 Kč</li>
+      <li><strong>Ošetření dásní</strong> — 2 000 Kč</li>
+      <li><strong>Rentgen (RTG)</strong> — 300 Kč</li>
+      <li><strong>Extrakce zubu</strong> — 2 500 Kč</li>
+      <li><strong>Konzultace lékaře</strong> — 600 Kč</li>
+    </ul>
+
+    <button class="show-more-btn">Zobrazit více</button>
+
+    <p style="text-align: center; margin-top: 2rem; color: #888; font-style: italic;">
+      * Ceny jsou orientační. Přesnou cenu sdělíme po vyšetření. Přijímáme pojišťovny VZP, ČPZP, OZP.
+    </p>
+  </div>
+</section>
 
 
         <section id="location" class="location-section">
@@ -1916,8 +1916,9 @@
     // Добавляем временные пункты меню
     rightMenu.innerHTML = `
       <li><a href="#home">Domů</a></li>
-      <li><a href="#about">O stomatologii</a></li>
       <li><a href="#services">Služby</a></li>
+      <li><a href="#about">O stomatologii</a></li>
+      
       ${rightMenu.dataset.original}
     `;
 
@@ -1945,6 +1946,18 @@
     }
   });
 }
+// Добавляем функционал “Показать больше / Меньше”:
+  document.addEventListener("DOMContentLoaded", () => {
+    const list = document.querySelector(".price-list");
+    const btn = document.querySelector(".show-more-btn");
+
+    btn.addEventListener("click", () => {
+      list.classList.toggle("expanded");
+      btn.textContent = list.classList.contains("expanded")
+        ? "Zobrazit méně"
+        : "Zobrazit více";
+    });
+  });
 
 
 
