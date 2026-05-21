@@ -12,6 +12,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
+        
 
     <style>
         /* Основные стили */
@@ -679,7 +680,7 @@
             z-index: 2;
             /* текст выше градиента */
             color: rgba(135, 85, 15, 0.80);
-            padding: 4rem 2rem;
+            padding: 4rem 4rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -747,6 +748,7 @@
             left: 50%;
             /* ставим по центру */
             transform: translateX(-50%);
+            margin-bottom: 1rem;
             /* корректируем по центру */
             display: flex;
             gap: 1rem;
@@ -1723,43 +1725,53 @@ mask-size: cover;
 
 
         <section id="services" class="section">
-            <div class="container">
-                <h2>Naše služby</h2>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <i class="fas fa-tooth"></i>
-                        <h3>Preventivní péče</h3>
-                        <p>Pravidelné kontroly, dentální hygiena, fluoridace a poradna pro správnou péči o zuby.</p>
-                    </div>
-                    <div class="service-card">
-                        <i class="fas fa-crown"></i>
-                        <h3>Konzervativní stomatologie</h3>
-                        <p>Léčba kazů, výplně, endodoncie (léčba kořenových kanálků) a ošetření citlivých zubů.</p>
-                    </div>
-                    <div class="service-card">
-                        <i class="fas fa-fill-drip"></i>
-                        <h3>Estetická stomatologie</h3>
-                        <p>Bělení zubů, veneery, estetické výplně a kompletní rekonstrukce úsměvu.</p>
-                    </div>
-                    <div class="service-card">
-                        <i class="fas fa-x-ray"></i>
-                        <h3>Digitální diagnostika</h3>
-                        <p>Přesná diagnostika pomocí moderního digitálního rentgenu.</p>
-                    </div>
-                    <div class="service-card">
-                        <i class="fas fa-smile-beam"></i>
-                        <h3>Protetika</h3>
-                        <p>Zubní náhrady, korunky, můstky, snímatelné a fixní protézy vyrobené na míru.</p>
-                    </div>
-                    <div class="service-card">
-                        <i class="fas fa-first-aid"></i>
-
-                        <h3>Chirurgická stomatologie</h3>
-                        <p>Extrakce zubů, ošetření implantátů, chirurgie parodontu a další chirurgické výkony.</p>
-                    </div>
-                </div>
+    <div class="container">
+        <h2>Naše služby</h2>
+        <div class="services-grid">
+            <!-- 1. Preventivní péče -->
+            <div class="service-card">
+                <i class="fas fa-tooth"></i>
+                <h3>Preventivní péče</h3>
+                <p>Pravidelné prohlídky pro dospělé i děti, včasná detekce kazů a odborné poradenství pro udržení zdravého chrupu.</p>
             </div>
-        </section>
+            
+            <!-- 2. Dentální hygiena -->
+            <div class="service-card">
+                <i class="fas fa-shield-virus"></i>
+                <h3>Dentální hygiena</h3>
+                <p>Profesionální čištění zubů, odstranění zubního kamene i pigmentace a instruktáž správné techniky domácí péče.</p>
+            </div>
+
+            <!-- 3. Konzervativní stomatologie -->
+            <div class="service-card">
+                <i class="fas fa-crown"></i>
+                <h3>Záchovná stomatologie</h3>
+                <p>Šetrné odstranění kazů pomocí moderních výplní, precizní ošetření kořenových kanálků a léčba citlivosti zubů.</p>
+            </div>
+
+            <!-- 4. Estetická stomatologie -->
+            <div class="service-card">
+                <i class="fas fa-fill-drip"></i>
+                <h3>Estetické zákroky</h3>
+                <p>Šetrné bělení, fotokompozitní úpravy tvaru a kompletní rekonstrukce, které vám navrátí sebevědomý úsměv.</p>
+            </div>
+
+            <!-- 5. Digitální diagnostika -->
+            <div class="service-card">
+                <i class="fas fa-x-ray"></i>
+                <h3>Digitální diagnostika</h3>
+                <p>Rychlé a přesné vyšetření pomocí moderního rentgenu s minimální dávkou záření pro odhalení skrytých problémů.</p>
+            </div>
+
+            <!-- 6. Protetika -->
+            <div class="service-card">
+                <i class="fas fa-smile-beam"></i>
+                <h3>Zubní protetika</h3>
+                <p>Výroba korunek, můstků a snímatelných či fixních náhrad na míru pro plnou obnovu funkce a vzhledu vašeho chrupu.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
 
         <section id="about" class="about-slider-section">
@@ -1772,9 +1784,8 @@ mask-size: cover;
                             klinice využíváme nejnovější digitální technologie.</p>
                     </div>
                     <div class="text-slide">
-                        <h2>Digitální zobrazování</h2>
-                        <p>Digitální zobrazování nám pomáhá odhalit problémy v raných stádiích, zatímco laserová terapie
-                            umožňuje méně invazivní zákroky.</p>
+                        <h2>Dentální hygiena</h2>
+                        <p>Zdravý úsměv začíná u čistých zubů. Pravidelná profesionální péče u specialisty předchází vzniku kazů i zánětů, odstraňuje pigmentace a je tím nejlepším základem pro dlouhodobé zdraví celých úst.</p>
                     </div>
                     <div class="text-slide">
                         <h2>Naše filozofie</h2>
@@ -1848,10 +1859,11 @@ mask-size: cover;
                             </p>
                             <p>Tyršova 3460, 434 01 Most</p>
                             <p style="margin-top: 1rem;">
-                                <strong style="text-shadow: 1px 2px 5px rgb(90, 45, 0);">Telefon:</strong> +420 777 034
-                                046<br>
-                                <strong style="text-shadow: 1px 2px 5px rgb(90, 45, 0);">Email:</strong>
-                                info@NordicDentale.cz<br>
+                                <strong style="text-shadow: 1px 2px 5px rgb(90, 45, 0);">Telefon:<br>
+                                </strong>ordinaci +420 777 034 046<br>
+                                +420 778 494 496<br>
+                                dentální hygienu +420770393555<br>
+                                
                                 <strong style="text-shadow: 1px 2px 5px rgb(90, 45, 0);">Ordinační hodiny:</strong>
                                 Po–Pá 7:30–16:00<br>
                                 Bolesti budou ošetřeny od 7:30 do 8:00, dle časové vytíženosti pracoviště, pak je čas
@@ -1877,7 +1889,7 @@ mask-size: cover;
                         <p><strong>Linky:</strong> 25</p>
                         <p><strong>Zastávka:</strong> Most, Báňská</p>
                         <p class="note">Zastávka je vedle.</p>
-                        <a href="https://www.dpmost.cz/data/jr_mhd-2025/linka_25_20250901.pdf" target="_blank"
+                        <a href="https://www.dpmost.cz/data/jr_mhd-2026/linka_25.pdf"
                             class="transport-link">
                             Zobrazit jízdní řád
                         </a>
@@ -1912,19 +1924,22 @@ mask-size: cover;
                 <div class="contact-info">
                     <div class="contact-card">
                         <h4><i class="fas fa-phone"></i> Telefon</h4>
-                        <p>+420 222 123 456</p>
-                        <p>+420 777 987 654</p>
+                        <p>ordinaci &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;777 034 046</p>
+                        </p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;778 494 496</p>
+                        <p>dentální hygiena &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;770 393 555
+                                            
+                        </p>
                     </div>
                     <div class="contact-card">
-                        <h4><i class="fas fa-envelope"></i> Email</h4>
-                        <p>info@NordicDentale.cz</p>
-                        <p>rezervace@NordicDentale.cz</p>
+                        <h4><i class="fas fa-envelope"></i> Adresa</h4>
+                        <p>Tyršova 3460, 434 01 Most</p>
+                        
                     </div>
                     <div class="contact-card">
                         <h4><i class="fas fa-clock"></i> Ordinační hodiny</h4>
-                        <p>Po-Pá: 8:00-19:00</p>
-                        <p>So: 9:00-15:00</p>
-                        <p>Ne: zavřeno</p>
+                        <p>Po–Pá 7:30–16:00</p>
+                        <p>Bolesti budou ošetřeny od 7:30 do 8:00, dle časové vytíženosti pracoviště, pak je čas vyhrazen pro objednané pacienty.</p>
+                    
                     </div>
 
                 </div>
