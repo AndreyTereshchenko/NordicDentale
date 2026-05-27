@@ -746,6 +746,7 @@
         
 
         .slider-buttons {
+            
             position: absolute;
             bottom: 0.5rem;
             /* отступ снизу */
@@ -754,14 +755,17 @@
             transform: translateX(-50%);
             margin-bottom: 1rem;
             /* корректируем по центру */
-            display: flex;
+            
             gap: 1rem;
             z-index: 3;
             /* поверх всего */
         }
+        .slider-buttons-mobile {
+    display: none;
+        }
+   
 
-
-        .slider-buttons button {
+        .slider-buttons button, .slider-buttons-mobile button {
             width: 45px;
             /* ширина = высоте */
             height: 45px;
@@ -782,7 +786,7 @@
         }
 
 
-        .slider-buttons button:active {
+        .slider-buttons button:active, .slider-buttons-mobile button:active {
             transform: translateY(4px);
             /* кнопка уходит вниз */
             box-shadow: 0 2px 0 rgb(35, 18, 0), 3px 5px 12px rgba(20, 10, 0, 0.5);
@@ -790,7 +794,7 @@
             /* свет снизу */
         }
 
-        .slider-buttons button:hover {
+        .slider-buttons button:hover, .slider-buttons-mobile button:hover {
             background: linear-gradient(to bottom, rgb(110, 55, 0), rgb(70, 35, 0));
             transform: translateY(-3px);
         }
@@ -808,13 +812,25 @@
       rgba(0, 0, 0, 0) 100%
     );
     }
-    .slider-buttons{
-            bottom: -15.5rem;
-        }
-    .slider-buttons button{
+    .text-container .slider-buttons {
+    display: none;
+}
+.slider-buttons-mobile {
+    display: flex;
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    justify-content: center;
+    padding: 1rem 0 0.5rem;
+    z-index: 3;
+    gap: 10px;
+}
+
+    .slider-buttons button, .slider-buttons-mobile button {
         background: linear-gradient(to bottom, rgb(90, 45, 0, 0.3), rgb(58, 29, 0, 0.3));
     }
-    .slider-buttons button:active {
+    .slider-buttons button:active, .slider-buttons-mobile button :active {
             transform: translateY(4px);
             /* кнопка уходит вниз */
             
@@ -822,7 +838,7 @@
             /* свет снизу */
         }
 
-        .slider-buttons button:hover {
+        .slider-buttons button:hover, .slider-buttons-mobile button :hover {
             background: linear-gradient(to bottom, rgb(110, 55, 0, 0.5), rgb(70, 35, 0, 0.5));
             transform: translateY(-3px);
         }   
@@ -1502,6 +1518,11 @@ mask-size: cover;
                 scroll-margin-top: 80px; 
                 height: 90.5vh;
             }
+            @media (max-width: 992px) {
+    .location-section {
+        height: auto;  /* ← на мобильных высота подстраивается под контент */
+    }
+}
             .about-slider-section {
                 flex-direction: column;
                 scroll-margin-top: 80px;                
@@ -1538,7 +1559,7 @@ mask-size: cover;
             color: #8B5A2B;
         }
         @media (max-width: 992px) {
-    .slider-buttons button {
+    .slider-buttons button, .slider-buttons-mobile button  {
         width: 50px;
         height: 50px;
         font-size: 1.2rem;
@@ -1556,12 +1577,12 @@ mask-size: cover;
 
 /* Мобильные телефоны */
 @media (max-width: 768px) {
-    .slider-buttons {
+    .slider-buttons, .slider-buttons-mobile button  {
         bottom: 1rem;
         gap: 0.7rem;
             }
     
-    .slider-buttons button {
+    .slider-buttons button, .slider-buttons-mobile button  {
         width: 45px;
         height: 45px;
         font-size: 1.1rem;
@@ -1638,7 +1659,7 @@ mask-size: cover;
 
 /* Маленькие мобильные */
 @media (max-width: 480px) {
-    .slider-buttons button {
+    .slider-buttons button, .slider-buttons-mobile button  {
         width: 40px;
         height: 40px;
         font-size: 1rem;
@@ -1802,6 +1823,10 @@ mask-size: cover;
                     </div>
                 </div>
 
+                <div class="slider-buttons-mobile">
+    <button class="prev"><i class="fas fa-chevron-left"></i></button>
+    <button class="next"><i class="fas fa-chevron-right"></i></button>
+</div>
                 <!-- Фото -->
                 <div class="image-container">
                     <img class="image-slide equal-img active" src="./picture/ordinacie1.jpg" alt="ordinace 1">
@@ -1982,8 +2007,8 @@ mask-size: cover;
                 showSlide(currentIndex);
             }
 
-            nextBtn.addEventListener('click', () => { nextSlide(); resetInterval(); });
-            prevBtn.addEventListener('click', () => { prevSlide(); resetInterval(); });
+           document.querySelectorAll('.next').forEach(btn => btn.addEventListener('click', () => { nextSlide(); resetInterval(); }));
+document.querySelectorAll('.prev').forEach(btn => btn.addEventListener('click', () => { prevSlide(); resetInterval(); }));
 
             function startInterval() { interval = setInterval(nextSlide, 5000); }
             function resetInterval() { clearInterval(interval); startInterval(); }
