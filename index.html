@@ -12,7 +12,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
-        
+
 
     <style>
         /* Основные стили */
@@ -20,7 +20,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-           
+
         }
 
         body {
@@ -108,7 +108,7 @@
                 left: 50px;
                 /* 2 карточки */
             }
-            
+
         }
 
         .logo-circle {
@@ -252,7 +252,7 @@
             .scrolled .container .nav-logo .logo-circle .logo-text {
                 font-size: 0.9rem;
             }
-            
+
         }
 
 
@@ -289,7 +289,7 @@
                 margin: 1rem 0;
             }
 
-     
+
 
             /* Крестик для закрытия */
             .burger.close div:nth-child(1) {
@@ -314,22 +314,26 @@
                 height: 130px;
                 padding-top: 0;
                 margin-left: 1rem;
-                justify-content: center;  /* вертикальное центрирование */
+                justify-content: center;
+                /* вертикальное центрирование */
                 gap: 2px;
             }
 
             .logo-circle img {
-    width: 38px;
-    height: 38px;
-    margin-top: -30px;       /* сброшен отступ из базового стиля */
-}
+                width: 38px;
+                height: 38px;
+                margin-top: -30px;
+                /* сброшен отступ из базового стиля */
+            }
 
-.logo-circle .logo-text {
-    font-size: 0.62rem;  /* уменьшен шрифт — всё помещается в круг */
-    line-height: 1.2;
-    margin-top: 0;        /* убран отступ, чтобы текст был ближе к логотипу */
+            .logo-circle .logo-text {
+                font-size: 0.62rem;
+                /* уменьшен шрифт — всё помещается в круг */
+                line-height: 1.2;
+                margin-top: 0;
+                /* убран отступ, чтобы текст был ближе к логотипу */
 
-}
+            }
 
             .scrolled .container .nav-logo .logo-circle img {
                 width: 40px;
@@ -377,12 +381,12 @@
                 background: #fff;
                 padding: 1rem;
             }
-           
+
 
             nav.active .nav-links a {
                 padding: 0.5rem 0;
             }
-         
+
 
             .logo-circle {
                 width: 140px;
@@ -463,7 +467,7 @@
             margin-bottom: 1rem;
         }
 
-      
+
 
         /* Секция Hero */
         .hero {
@@ -515,6 +519,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            text-align: center;
             position: relative;
             z-index: 2;
             max-width: 50%;
@@ -524,22 +529,31 @@
         }
 
         .hero-content p:first-of-type {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeUp 1s ease forwards 0.3s;
-         
+          font-size: 1.3rem;    /* меньше — не конкурирует с h1 */
+    letter-spacing: 0.15em;
+    text-transform: uppercase; /* элегантный надзаголовок */
+    margin-bottom: 0.4rem;
+
         }
 
+        p:first-of-type::after {
+    /* декоративная линия между надписью и h1 */
+    content: "";
+    display: block;
+    width: 60px; height: 2px;
+    background: rgba(255,255,255,0.6);
+    margin: 0.6rem auto 0;
+}
+
         .hero-content h1 {
-            font-size: 3rem;
+            font-size: 3.8rem;
             font-weight: 800;
-            margin-bottom: 1rem;
+             margin-bottom: 1.8rem;
             color: #fff;
             opacity: 0;
             transform: translateY(20px);
             animation: fadeUp 1s ease forwards 0.6s;
+            line-height: 1.1;
         }
 
         .hero-content p:last-of-type {
@@ -570,8 +584,10 @@
             opacity: 0;
             transform: translateY(20px);
             animation: fadeUp 1s ease forwards 1.2s;
+            margin-top: 5rem;
+             box-shadow: 0 4px 15px rgba(90, 45, 0, 0.2);
         }
-        
+
 
         .cta-button:hover {
             background: linear-gradient(to bottom, rgb(110, 55, 0), rgb(70, 35, 0));
@@ -616,8 +632,8 @@
             }
 
             .hero-content {
-                max-width: 90%;
-                padding: 2rem;
+                max-width: 55%;
+                gap: 0.5rem;
             }
 
             .hero-content h1 {
@@ -627,7 +643,7 @@
 
         /* Секция "О нас" */
         .about-slider-section {
-            position: relative;            
+            position: relative;
             height: 92vh;
             overflow: hidden;
         }
@@ -726,29 +742,31 @@
         .image-container img.active {
             opacity: 1;
         }
-        
+
 
         .slider-buttons {
-            
+
             position: absolute;
             bottom: 0.5rem;
             /* отступ снизу */
-            left: 50%;         
+            left: 50%;
             /* ставим по центру */
             transform: translateX(-50%);
             margin-bottom: 1rem;
             /* корректируем по центру */
-            
+
             gap: 1rem;
             z-index: 3;
             /* поверх всего */
         }
-        .slider-buttons-mobile {
-    display: none;
-        }
-   
 
-        .slider-buttons button, .slider-buttons-mobile button {
+        .slider-buttons-mobile {
+            display: none;
+        }
+
+
+        .slider-buttons button,
+        .slider-buttons-mobile button {
             width: 45px;
             /* ширина = высоте */
             height: 45px;
@@ -760,8 +778,8 @@
             color: rgba(255, 255, 255, 0.8);
             /* цвет стрелок */
             font-size: 1.2rem;
-            cursor: pointer;       
-            
+            cursor: pointer;
+
             font-weight: 600;
             /* максимально жирные стрелки */
             font-size: 1.5rem;
@@ -769,7 +787,8 @@
         }
 
 
-        .slider-buttons button:active, .slider-buttons-mobile button:active {
+        .slider-buttons button:active,
+        .slider-buttons-mobile button:active {
             transform: translateY(4px);
             /* кнопка уходит вниз */
             box-shadow: 0 2px 0 rgb(35, 18, 0), 3px 5px 12px rgba(20, 10, 0, 0.5);
@@ -777,75 +796,83 @@
             /* свет снизу */
         }
 
-        .slider-buttons button:hover, .slider-buttons-mobile button:hover {
+        .slider-buttons button:hover,
+        .slider-buttons-mobile button:hover {
             background: linear-gradient(to bottom, rgb(110, 55, 0), rgb(70, 35, 0));
             transform: translateY(-3px);
         }
 
         @media (max-width: 992px) {
             .about-slider {
-                flex-direction: column;}
-    .about-slider::before {
-    width: 100%;
-    height: 70%;
-    background: linear-gradient(
-      to bottom,
-      rgba(135, 85, 15, 0.95) 0%,
-      rgba(135, 85, 15, 0.80) 60%,
-      rgba(0, 0, 0, 0) 100%
-    );
-    }
-    .text-container .slider-buttons {
-    display: none;
-}
-.slider-buttons-mobile {
-    display: flex;
-    position: relative;
-    bottom: auto;
-    left: auto;
-    transform: none;
-    justify-content: center;
-    padding: 1rem 0 0.5rem;
-    z-index: 3;
-    gap: 10px;
-}
+                flex-direction: column;
+            }
 
-    .slider-buttons button, .slider-buttons-mobile button {
-        background: linear-gradient(to bottom, rgb(90, 45, 0, 0.3), rgb(58, 29, 0, 0.3));
-    }
-    .slider-buttons button:active, .slider-buttons-mobile button :active {
-            transform: translateY(4px);
-            /* кнопка уходит вниз */
-            
-            background: linear-gradient(to bottom, rgb(58, 29, 0, ), rgb(90, 45, 0));
-            /* свет снизу */
-        }
+            .about-slider::before {
+                width: 100%;
+                height: 70%;
+                background: linear-gradient(to bottom,
+                        rgba(135, 85, 15, 0.95) 0%,
+                        rgba(135, 85, 15, 0.80) 60%,
+                        rgba(0, 0, 0, 0) 100%);
+            }
 
-        .slider-buttons button:hover, .slider-buttons-mobile button :hover {
-            background: linear-gradient(to bottom, rgb(110, 55, 0, 0.5), rgb(70, 35, 0, 0.5));
-            transform: translateY(-3px);
-        }   
-        .image-container img {
-            -webkit-mask-image: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0) 0%,    /* низ — прозрачный */
-    rgba(0, 0, 0, 1) 25%,   /* к середине — полностью видно */
-    rgba(0, 0, 0, 1) 100%   /* верх — полностью видим */
-);
--webkit-mask-repeat: no-repeat;
--webkit-mask-size: cover;
+            .text-container .slider-buttons {
+                display: none;
+            }
 
-mask-image: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 1) 25%,
-    rgba(0, 0, 0, 1) 100%
-);
-mask-repeat: no-repeat;
-mask-size: cover;
-        }
+            .slider-buttons-mobile {
+                display: flex;
+                position: relative;
+                bottom: auto;
+                left: auto;
+                transform: none;
+                justify-content: center;
+                padding: 1rem 0 0.5rem;
+                z-index: 3;
+                gap: 10px;
+            }
 
-           
+            .slider-buttons button,
+            .slider-buttons-mobile button {
+                background: linear-gradient(to bottom, rgb(90, 45, 0, 0.3), rgb(58, 29, 0, 0.3));
+            }
+
+            .slider-buttons button:active,
+            .slider-buttons-mobile button :active {
+                transform: translateY(4px);
+                /* кнопка уходит вниз */
+
+                background: linear-gradient(to bottom, rgb(58, 29, 0, ), rgb(90, 45, 0));
+                /* свет снизу */
+            }
+
+            .slider-buttons button:hover,
+            .slider-buttons-mobile button :hover {
+                background: linear-gradient(to bottom, rgb(110, 55, 0, 0.5), rgb(70, 35, 0, 0.5));
+                transform: translateY(-3px);
+            }
+
+            .image-container img {
+                -webkit-mask-image: linear-gradient(to bottom,
+                        rgba(0, 0, 0, 0) 0%,
+                        /* низ — прозрачный */
+                        rgba(0, 0, 0, 1) 25%,
+                        /* к середине — полностью видно */
+                        rgba(0, 0, 0, 1) 100%
+                        /* верх — полностью видим */
+                    );
+                -webkit-mask-repeat: no-repeat;
+                -webkit-mask-size: cover;
+
+                mask-image: linear-gradient(to bottom,
+                        rgba(0, 0, 0, 0) 0%,
+                        rgba(0, 0, 0, 1) 25%,
+                        rgba(0, 0, 0, 1) 100%);
+                mask-repeat: no-repeat;
+                mask-size: cover;
+            }
+
+
 
             .image-container {
                 min-height: 250px;
@@ -903,9 +930,9 @@ mask-size: cover;
             flex-direction: column;
             justify-content: flex-start;
             position: relative;
-            margin-top: 20px;   
+            margin-top: 20px;
             height: 100 vh;
-                     box-shadow: 0 -6px 10px -6px #5a2d0026;
+            box-shadow: 0 -6px 10px -6px #5a2d0026;
             border-radius: 30px 0 0 0;
 
         }
@@ -958,85 +985,88 @@ mask-size: cover;
         }
 
         /* Секция "Цены" */
-      .price-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 auto;
-  max-width: 600px;
-  text-align: left;
-  font-family: 'Montserrat', sans-serif;
-  overflow: hidden;
-  max-height: calc(2.5rem * 10); /* показываем 10 строк */
-  transition: max-height 0.6s ease;
-}
+        .price-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 auto;
+            max-width: 600px;
+            text-align: left;
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+            max-height: calc(2.5rem * 10);
+            /* показываем 10 строк */
+            transition: max-height 0.6s ease;
+        }
 
-.price-list li {
-  padding: 0.8rem 1rem;
-  border-bottom: 1px solid rgba(90, 45, 0, 0.1);
-  font-size: 1.1rem;
-  color: #333;
-  background: rgba(90, 45, 0, 0.03);
-  border-radius: 5px;
-  margin-bottom: 0.5rem;
-  transition: background 0.3s ease;
-}
+        .price-list li {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid rgba(90, 45, 0, 0.1);
+            font-size: 1.1rem;
+            color: #333;
+            background: rgba(90, 45, 0, 0.03);
+            border-radius: 5px;
+            margin-bottom: 0.5rem;
+            transition: background 0.3s ease;
+        }
 
-.price-list li strong {
-  color: rgb(90, 45, 0);
-}
+        .price-list li strong {
+            color: rgb(90, 45, 0);
+        }
 
-.price-list li:hover {
-  background: rgba(90, 45, 0, 0.1);
-}
+        .price-list li:hover {
+            background: rgba(90, 45, 0, 0.1);
+        }
 
-.price-list.expanded {
-  max-height: 1000px; /* достаточно большое значение */
-}
+        .price-list.expanded {
+            max-height: 1000px;
+            /* достаточно большое значение */
+        }
 
-.show-more-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  margin: 1.5rem auto 0;
-  background: linear-gradient(135deg, rgba(90, 45, 0, 0.05), rgba(139, 90, 43, 0.1));
-  border: 2px solid rgb(90, 45, 0);
-  color: rgb(90, 45, 0);
-  padding: 0.8rem 2rem;
-  border-radius: 30px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 4px 15px rgba(90, 45, 0, 0.1);
-}
+        .show-more-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 1.5rem auto 0;
+            background: linear-gradient(135deg, rgba(90, 45, 0, 0.05), rgba(139, 90, 43, 0.1));
+            border: 2px solid rgb(90, 45, 0);
+            color: rgb(90, 45, 0);
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 15px rgba(90, 45, 0, 0.1);
+        }
 
-.show-more-btn:hover {
-  background: linear-gradient(135deg, rgba(90, 45, 0, 0.1), rgba(139, 90, 43, 0.15));
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(90, 45, 0, 0.2);
-  border-color: rgb(139, 90, 43);
-}
+        .show-more-btn:hover {
+            background: linear-gradient(135deg, rgba(90, 45, 0, 0.1), rgba(139, 90, 43, 0.15));
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(90, 45, 0, 0.2);
+            border-color: rgb(139, 90, 43);
+        }
 
-.show-more-btn:active {
-  transform: translateY(-1px);
-}
+        .show-more-btn:active {
+            transform: translateY(-1px);
+        }
 
 
         /* Секция "Где нас найти" */
         .location-section {
             position: relative;
             width: 100%;
-            height: 100%;
+            height: 100vh;
             overflow: hidden;
         }
 
         /* Контейнер */
         .location-container {
-    display: flex;
-    flex: 1;
-    position: relative;
-}
+            display: flex;
+            flex: 1;
+            height: 100vh;
+            position: relative;
+        }
 
         /* 🎨 Градиент: как в about, только справа налево */
         .location-container::before {
@@ -1059,29 +1089,29 @@ mask-size: cover;
         }
 
         /* Основная структура: фото слева, текст справа */
-      .location-info {
-    display: flex;
-    width: 100%;
-    height: 100%;
-}
+        .location-info {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
 
         /* Фото слева */
         .location-image {
-    flex: 0 0 60%;
-    position: relative;
-    height: auto;
-    overflow: hidden;
-}
+            flex: 0 0 60%;
+            position: relative;
+            height: auto;
+            overflow: hidden;
+        }
 
-     .location-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    -webkit-mask-image: linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 25%);
-    mask-image: linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 25%);
-    transition: transform 3s ease;
-}
+        .location-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            -webkit-mask-image: linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 25%);
+            mask-image: linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 25%);
+            transition: transform 3s ease;
+        }
 
         /* Текст справа */
         .address-container {
@@ -1093,7 +1123,7 @@ mask-size: cover;
             padding: 4rem 2rem;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+           justify-content: flex-end;   
             font-size: 1.5rem;
         }
 
@@ -1122,24 +1152,26 @@ mask-size: cover;
 
         /* 📱 Адаптив */
         @media (max-width: 992px) {
-            
+
             .location-info {
-                flex-direction: column;}
+                flex-direction: column;
+            }
+
             .map-container {
                 height: auto;
             }
 
-            .address-card{
+            .address-card {
                 padding-left: 0;
             }
-            
+
 
             /* .location-image {
                 min-height: 250px;
             } */
 
             .address-container {
-                
+
                 padding: 2rem;
                 text-align: center;
             }
@@ -1154,23 +1186,25 @@ mask-size: cover;
                         rgba(135, 85, 15, 0.85) 0%,
                         rgba(0, 0, 0, 0) 100%);
             }
-             .location-image img {
-                  -webkit-mask-image: linear-gradient(to top,
-                    rgba(0, 0, 0, 0) 0%,
-                    /* прозрачное — край справа */
-                    rgba(0, 0, 0, 1) 25%);
-            /* полностью видно — остальная часть */
-            -webkit-mask-repeat: no-repeat;
-            -webkit-mask-size: cover;
 
-            mask-image: linear-gradient(to top,
-                    rgba(0, 0, 0, 0) 0%,
-                    rgba(0, 0, 0, 1) 25%);
-            mask-repeat: no-repeat;
-            mask-size: cover;
-             }
-        
-}
+            .location-image img {
+                -webkit-mask-image: linear-gradient(to top,
+                        rgba(0, 0, 0, 0) 0%,
+                        /* прозрачное — край справа */
+                        rgba(0, 0, 0, 1) 25%);
+                /* полностью видно — остальная часть */
+                -webkit-mask-repeat: no-repeat;
+                -webkit-mask-size: cover;
+
+                mask-image: linear-gradient(to top,
+                        rgba(0, 0, 0, 0) 0%,
+                        rgba(0, 0, 0, 1) 25%);
+                mask-repeat: no-repeat;
+                mask-size: cover;
+            }
+
+        }
+
         /* Map */
 
         .map-section {
@@ -1205,7 +1239,7 @@ mask-size: cover;
         }
 
         .map-container {
-                    
+
             overflow: hidden;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             margin-top: 50px;
@@ -1278,20 +1312,20 @@ mask-size: cover;
         }
 
         /* 📱 Адаптивность */
-         @media (max-width: 992px) {
-             .map-content {
+        @media (max-width: 992px) {
+            .map-content {
                 flex-direction: row-reverse;
-            }  
-            
+            }
+
             .transport-info {
                 order: 2;
                 text-align: center;
                 width: 80%;
             }
 
-           
 
-            
+
+
 
             .map-title {
                 text-align: center;
@@ -1330,7 +1364,7 @@ mask-size: cover;
             /* свет снизу */
         }
 
-         /* Стили для секции контактов */
+        /* Стили для секции контактов */
         #contact {
 
             background: linear-gradient(to right,
@@ -1366,12 +1400,13 @@ mask-size: cover;
             .contact-info {
                 grid-template-columns: repeat(1, 1fr);
             }
-             .map-content {
+
+            .map-content {
                 flex-direction: column;
-            } 
+            }
         }
 
-              /* Десктоп (опционально, можно оставить 4) */
+        /* Десктоп (опционально, можно оставить 4) */
         @media (min-width: 1440px) {
             .contact-info {
                 grid-template-columns: repeat(3, 1fr);
@@ -1459,34 +1494,39 @@ mask-size: cover;
 
             .hero-content {
                 max-width: 70%;
-                padding: 2rem; 
-             
-                           
+                padding: 2rem;
+
+
             }
 
             .hero-content h1 {
                 font-size: 2.5rem;
-                   padding-top: 20px;
+                padding-top: 20px;
             }
 
             .location-section {
-                scroll-margin-top: 80px; 
+                scroll-margin-top: 80px;
                 height: 90.5vh;
             }
+
             @media (max-width: 992px) {
-    .location-section {
-        height: auto;  /* ← на мобильных высота подстраивается под контент */
-    }
-}
+                .location-section {
+                    height: auto;
+                    /* ← на мобильных высота подстраивается под контент */
+                }
+            }
+
             .about-slider-section {
                 flex-direction: column;
-                scroll-margin-top: 80px;                
+                scroll-margin-top: 80px;
             }
+
             .text-container,
             .image-container {
                 width: 100%;
                 height: auto;
             }
+
             .logo-circle {
                 width: 180px;
                 height: 180px;
@@ -1494,7 +1534,9 @@ mask-size: cover;
             }
         }
 
-          .service-card, .contact-card, .transport-card {
+        .service-card,
+        .contact-card,
+        .transport-card {
             background: rgba(255, 255, 255, 0.9) !important;
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
@@ -1502,153 +1544,168 @@ mask-size: cover;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
         }
 
-        .service-card:hover, .contact-card:hover, .transport-card:hover {
+        .service-card:hover,
+        .contact-card:hover,
+        .transport-card:hover {
             transform: translateY(-10px) scale(1.03) !important;
             box-shadow: 0 20px 40px rgba(90, 45, 0, 0.2) !important;
         }
-        .service-card i, .contact-card i, .transport-card i {
+
+        .service-card i,
+        .contact-card i,
+        .transport-card i {
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .service-card:hover i, .contact-card:hover i, .transport-card:hover i {
+
+        .service-card:hover i,
+        .contact-card:hover i,
+        .transport-card:hover i {
             transform: scale(1.2) rotate(5deg);
             color: #8B5A2B;
         }
+
         @media (max-width: 992px) {
-    .slider-buttons button, .slider-buttons-mobile button  {
-        width: 50px;
-        height: 50px;
-        font-size: 1.2rem;
-    }
-    
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
-    
-    .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-    }
-}
 
-/* Мобильные телефоны */
-@media (max-width: 768px) {
-    .slider-buttons, .slider-buttons-mobile button  {
-        bottom: 1rem;
-        gap: 0.7rem;
+            .slider-buttons button,
+            .slider-buttons-mobile button {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
             }
-    
-    .slider-buttons button, .slider-buttons-mobile button  {
-        width: 45px;
-        height: 45px;
-        font-size: 1.1rem;
-    }
-    
-    .hero-content {
-        padding: 1.5rem;
-             padding-top: 7.5rem;
-    }
-    
-    .hero-content h1 {
-        font-size: 2rem;
-    }
-    
-    .hero-content p {
-        font-size: 0.95rem;
-    }
-    
-    .services-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    
-    .service-card,
-    .contact-card,
-    .transport-card {
-        padding: 1.5rem;
-    }
-    
-    .section {
-        padding: 2rem 1rem;
-    }
-    
-    h2 {
-        font-size: 1.8rem;
-    }
-    
-    .about-slider {
-        min-height: auto;
-    }
-    
-    .text-container {
-        padding: 1.5rem;
-    }
-    
-    .price-list {
-        padding-left: 1.2rem;
-    }
-    
-    .price-list li {
-        font-size: 0.95rem;
-        padding: 0.6rem;
-    }
-    
-    .show-more-btn {
-        padding: 0.7rem 1.5rem;
-        font-size: 0.9rem;
-    }
-    
-    /* Адаптация секции адреса */
-    .address-title {
-        font-size: 1.8rem !important;
-    }
-    
-    .address-container {
-        font-size: 0.95rem !important;
-        padding: 1.5rem 1rem !important;
-    }
-    
-    .address-container p {
-        font-size: 0.9rem !important;
-    }
-}
 
-/* Маленькие мобильные */
-@media (max-width: 480px) {
-    .slider-buttons button, .slider-buttons-mobile button  {
-        width: 40px;
-        height: 40px;
-        font-size: 1rem;
-          }
-    
-    .hero-content h1 {
-        font-size: 1.6rem;
-    }
-    
-    .logo-circle {
-        width: 120px;
-        height: 120px;
-    }
-    
-    .cta-button {
-        padding: 0.7rem 1.5rem;
-        font-size: 1rem;
-    }
-    
-    /* Адаптация секции адреса для маленьких экранов */
-    .address-title {
-        font-size: 1.5rem !important;
-    }
-    
-    .address-container {
-        font-size: 0.85rem !important;
-        padding: 1rem 0.5rem !important;
-    }
-    
-    .address-container p {
-        font-size: 0.8rem !important;
-    }
-}        
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
 
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        /* Мобильные телефоны */
+        @media (max-width: 768px) {
+
+            .slider-buttons,
+            .slider-buttons-mobile button {
+                bottom: 1rem;
+                gap: 0.7rem;
+            }
+
+            .slider-buttons button,
+            .slider-buttons-mobile button {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+
+            .hero-content {
+                padding: 1.5rem;
+                padding-top: 7.5rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 0.95rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .service-card,
+            .contact-card,
+            .transport-card {
+                padding: 1.5rem;
+            }
+
+            .section {
+                padding: 2rem 1rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .about-slider {
+                min-height: auto;
+            }
+
+            .text-container {
+                padding: 1.5rem;
+            }
+
+            .price-list {
+                padding-left: 1.2rem;
+            }
+
+            .price-list li {
+                font-size: 0.95rem;
+                padding: 0.6rem;
+            }
+
+            .show-more-btn {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            /* Адаптация секции адреса */
+            .address-title {
+                font-size: 1.8rem !important;
+            }
+
+            .address-container {
+                font-size: 0.95rem !important;
+                padding: 1.5rem 1rem !important;
+            }
+
+            .address-container p {
+                font-size: 0.9rem !important;
+            }
+        }
+
+        /* Маленькие мобильные */
+        @media (max-width: 480px) {
+
+            .slider-buttons button,
+            .slider-buttons-mobile button {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 1.6rem;
+            }
+
+            .logo-circle {
+                width: 120px;
+                height: 120px;
+            }
+
+            .cta-button {
+                padding: 0.7rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            /* Адаптация секции адреса для маленьких экранов */
+            .address-title {
+                font-size: 1.5rem !important;
+            }
+
+            .address-container {
+                font-size: 0.85rem !important;
+                padding: 1rem 0.5rem !important;
+            }
+
+            .address-container p {
+                font-size: 0.8rem !important;
+            }
+        }
     </style>
 
 
@@ -1659,7 +1716,7 @@ mask-size: cover;
     <header>
         <nav class="container">
             <ul class="nav-links left">
-                <li><a href="#home" class="home-link">Domů</a></li>                
+                <li><a href="#home" class="home-link">Domů</a></li>
                 <li><a href="#services">Služby</a></li>
                 <li><a href="#about">Dentální hygiena</a></li>
             </ul>
@@ -1677,7 +1734,7 @@ mask-size: cover;
                 <li><a href="#contact">Kontakt</a></li>
             </ul>
 
-            
+
 
             <!-- Бургер -->
             <div class="burger" onclick="toggleBurgerMenu()">
@@ -1703,53 +1760,58 @@ mask-size: cover;
 
 
         <section id="services" class="section">
-    <div class="container">
-        <h2>Naše služby</h2>
-        <div class="services-grid">
-            <!-- 1. Preventivní péče -->
-            <div class="service-card">
-                <i class="fas fa-tooth"></i>
-                <h3>Preventivní péče</h3>
-                <p>Pravidelné prohlídky pro dospělé i děti, včasná detekce kazů a odborné poradenství pro udržení zdravého chrupu.</p>
-            </div>
-            
-            <!-- 2. Dentální hygiena -->
-            <div class="service-card">
-                <i class="fas fa-shield-virus"></i>
-                <h3>Dentální hygiena</h3>
-                <p>Profesionální čištění zubů, odstranění zubního kamene i pigmentace a instruktáž správné techniky domácí péče.</p>
-            </div>
+            <div class="container">
+                <h2>Naše služby</h2>
+                <div class="services-grid">
+                    <!-- 1. Preventivní péče -->
+                    <div class="service-card">
+                        <i class="fas fa-tooth"></i>
+                        <h3>Preventivní péče</h3>
+                        <p>Pravidelné prohlídky pro dospělé i děti, včasná detekce kazů a odborné poradenství pro
+                            udržení zdravého chrupu.</p>
+                    </div>
 
-            <!-- 3. Konzervativní stomatologie -->
-            <div class="service-card">
-                <i class="fas fa-crown"></i>
-                <h3>Záchovná stomatologie</h3>
-                <p>Šetrné odstranění kazů pomocí moderních výplní, precizní ošetření kořenových kanálků a léčba citlivosti zubů.</p>
-            </div>
+                    <!-- 2. Dentální hygiena -->
+                    <div class="service-card">
+                        <i class="fas fa-shield-virus"></i>
+                        <h3>Dentální hygiena</h3>
+                        <p>Profesionální čištění zubů, odstranění zubního kamene i pigmentace a instruktáž správné
+                            techniky domácí péče.</p>
+                    </div>
 
-            <!-- 4. Estetická stomatologie -->
-            <div class="service-card">
-                <i class="fas fa-fill-drip"></i>
-                <h3>Estetické zákroky</h3>
-                <p> Šetrné metody bělení, fotokompozitní úpravy barvy a tvaru zubů.</p>
-            </div>
+                    <!-- 3. Konzervativní stomatologie -->
+                    <div class="service-card">
+                        <i class="fas fa-crown"></i>
+                        <h3>Záchovná stomatologie</h3>
+                        <p>Šetrné odstranění kazů pomocí moderních výplní, precizní ošetření kořenových kanálků a léčba
+                            citlivosti zubů.</p>
+                    </div>
 
-            <!-- 5. Digitální diagnostika -->
-            <div class="service-card">
-                <i class="fas fa-x-ray"></i>
-                <h3>Digitální diagnostika</h3>
-                <p>Rychlé a přesné vyšetření pomocí moderního rentgenu s minimální dávkou záření pro odhalení skrytých problémů.</p>
-            </div>
+                    <!-- 4. Estetická stomatologie -->
+                    <div class="service-card">
+                        <i class="fas fa-fill-drip"></i>
+                        <h3>Estetické zákroky</h3>
+                        <p> Šetrné metody bělení, fotokompozitní úpravy barvy a tvaru zubů.</p>
+                    </div>
 
-            <!-- 6. Protetika -->
-            <div class="service-card">
-                <i class="fas fa-smile-beam"></i>
-                <h3>Zubní protetika</h3>
-                <p>Výroba korunek, můstků a snímatelných či fixních náhrad na míru pro plnou obnovu funkce a vzhledu vašeho chrupu.</p>
+                    <!-- 5. Digitální diagnostika -->
+                    <div class="service-card">
+                        <i class="fas fa-x-ray"></i>
+                        <h3>Digitální diagnostika</h3>
+                        <p>Rychlé a přesné vyšetření pomocí moderního rentgenu s minimální dávkou záření pro odhalení
+                            skrytých problémů.</p>
+                    </div>
+
+                    <!-- 6. Protetika -->
+                    <div class="service-card">
+                        <i class="fas fa-smile-beam"></i>
+                        <h3>Zubní protetika</h3>
+                        <p>Výroba korunek, můstků a snímatelných či fixních náhrad na míru pro plnou obnovu funkce a
+                            vzhledu vašeho chrupu.</p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
 
 
         <section id="about" class="about-slider-section">
@@ -1757,19 +1819,25 @@ mask-size: cover;
                 <!-- Текстовая часть -->
                 <div class="text-container">
                     <div class="text-slide active">
-                       <h2>O stomatologii</h2>
-    <p>Současná stomatologie představuje fascinující spojení moderní vědy, pokročilé technologie a umění. Na naší klinice aktivně využíváme nejnovější digitální postupy pro dosažení stoprocentního výsledku a vašeho maximálního pohodlí.</p>
-</div>
+                        <h2>O stomatologii</h2>
+                        <p>Současná stomatologie představuje fascinující spojení moderní vědy, pokročilé technologie a
+                            umění. Na naší klinice aktivně využíváme nejnovější digitální postupy pro dosažení
+                            stoprocentního výsledku a vašeho maximálního pohodlí.</p>
+                    </div>
 
-<div class="text-slide">
-    <h2>Dentální hygiena</h2>
-    <p>Zdravý úsměv vždy spolehlivě začíná u čistých zubů. Pravidelná profesionální péče u certifikovaného specialisty účinně předchází vzniku kazů i zánětů, odstraňuje pigmentace a tvoří nejlepší základ pro zdraví úst.</p>
-</div>
+                    <div class="text-slide">
+                        <h2>Dentální hygiena</h2>
+                        <p>Zdravý úsměv vždy spolehlivě začíná u čistých zubů. Pravidelná profesionální péče u
+                            certifikovaného specialisty účinně předchází vzniku kazů i zánětů, odstraňuje pigmentace a
+                            tvoří nejlepší základ pro zdraví úst.</p>
+                    </div>
 
-<div class="text-slide">
-    <h2>Naše filozofie</h2>
-    <p>Naše hlavní filozofie pevně spočívá v precizní preventivní péči a zachování přírodních zubů, kdykoli je to možné. Transparentní komunikace, lidský přístup a férové ceny jsou pro nás standardem.</p>
-</div>
+                    <div class="text-slide">
+                        <h2>Naše filozofie</h2>
+                        <p>Naše hlavní filozofie pevně spočívá v precizní preventivní péči a zachování přírodních zubů,
+                            kdykoli je to možné. Transparentní komunikace, lidský přístup a férové ceny jsou pro nás
+                            standardem.</p>
+                    </div>
 
                     <!-- Кнопки управления -->
                     <div class="slider-buttons">
@@ -1779,9 +1847,9 @@ mask-size: cover;
                 </div>
 
                 <div class="slider-buttons-mobile">
-    <button class="prev"><i class="fas fa-chevron-left"></i></button>
-    <button class="next"><i class="fas fa-chevron-right"></i></button>
-</div>
+                    <button class="prev"><i class="fas fa-chevron-left"></i></button>
+                    <button class="next"><i class="fas fa-chevron-right"></i></button>
+                </div>
                 <!-- Фото -->
                 <div class="image-container">
                     <img class="image-slide equal-img active" src="./picture/ordinacie1.jpg" alt="ordinace 1">
@@ -1792,32 +1860,32 @@ mask-size: cover;
         </section>
 
 
-       <section id="prices" class="section">
-  <div class="container">
-    <h2>Ceník služeb</h2>
+        <section id="prices" class="section">
+            <div class="container">
+                <h2>Ceník služeb</h2>
 
-    <ul class="price-list">
-      <li><strong>Preventivní prohlídka</strong> — hrazeno zdravotní pojišťovnou</li>
-      <li><strong>Rentgen (RTG)</strong> — hrazeno zdravotní pojišťovnou</li>
-      <li><strong>Extrakce zubu</strong> — hrazeno zdravotní pojišťovnou</li>
-      <li><strong>Dentální hygiena</strong> — od 1 300 Kč dle náročnosti výkonu</li>
-      <li><strong>Fotokompozitní výplň</strong> — od 1 600 Kč</li>
-      <li><strong>Endodontické ošetření</strong> — od 2 000 Kč za kanálek</li>
-      <li><strong>Keramická korunka</strong> — 7 500 Kč</li>
-      <li><strong>Konzultace lékaře</strong> — 600 Kč</li>
-      <li><strong>Domácí bělení</strong> — 6 000 Kč za obě čelisti</li>
-      <li><strong>Profesionální ordinační bělení</strong> — 7 000 Kč za obě čelisti</li>
-      <li><strong>Kombinované bělení</strong> — 10 000 Kč za obě čelisti</li>
-      
-    </ul>
+                <ul class="price-list">
+                    <li><strong>Preventivní prohlídka</strong> — hrazeno zdravotní pojišťovnou</li>
+                    <li><strong>Rentgen (RTG)</strong> — hrazeno zdravotní pojišťovnou</li>
+                    <li><strong>Extrakce zubu</strong> — hrazeno zdravotní pojišťovnou</li>
+                    <li><strong>Dentální hygiena</strong> — od 1 300 Kč dle náročnosti výkonu</li>
+                    <li><strong>Fotokompozitní výplň</strong> — od 1 600 Kč</li>
+                    <li><strong>Endodontické ošetření</strong> — od 2 000 Kč za kanálek</li>
+                    <li><strong>Keramická korunka</strong> — 7 500 Kč</li>
+                    <li><strong>Konzultace lékaře</strong> — 600 Kč</li>
+                    <li><strong>Domácí bělení</strong> — 6 000 Kč za obě čelisti</li>
+                    <li><strong>Profesionální ordinační bělení</strong> — 7 000 Kč za obě čelisti</li>
+                    <li><strong>Kombinované bělení</strong> — 10 000 Kč za obě čelisti</li>
 
-    <button class="show-more-btn">Zobrazit více</button>
+                </ul>
 
-    <p style="text-align: center; margin-top: 2rem; color: #888; font-style: italic;">
-      * Ceny jsou orientační. Přesnou cenu sdělíme po vyšetření. Přijímáme pojišťovny VZP, ČPZP, OZP.
-    </p>
-  </div>
-</section>
+                <button class="show-more-btn">Zobrazit více</button>
+
+                <p style="text-align: center; margin-top: 2rem; color: #888; font-style: italic;">
+                    * Ceny jsou orientační. Přesnou cenu sdělíme po vyšetření. Přijímáme pojišťovny VZP, ČPZP, OZP.
+                </p>
+            </div>
+        </section>
 
 
         <section id="location" class="location-section">
@@ -1841,14 +1909,15 @@ mask-size: cover;
                             </p>
                             <p>Tyršova 3460, 434 01 Most</p>
                             <p style="margin-top: 1rem;">
-                                <strong style="text-shadow: 1px 2px 5px rgb(90, 45, 0);">Telefon:<br>
-                                </strong>Ordinace +420 777 034 046<br>
-                                +420 778 494 496<br>
-                                Dentální hygiena +420770393555<br>
-                                
+                                <!-- <strong style="text-shadow: 1px 2px 5px rgb(90, 45, 0);">Telefon:<br> -->
+                                </strong>Ordinace<br> +420 777 034 046<br>
+                                +420 778 494 496<br><br>
+                                Dentální hygiena<br>
+                                 +420770393555<br><br>
+
                                 <strong style="text-shadow: 1px 2px 5px rgb(90, 45, 0);">Ordinační hodiny:</strong>
-                                Po–Pá 7:30–16:00<br>
-                                Bolesti budou ošetřeny od 7:30 do 8:00, dle časové vytíženosti pracoviště, pak je čas
+                                Po–Pá &nbsp;&nbsp; 7:30–16:00<br>
+                                Bolesti jsou ošetřeny od 7:30 do 8:00, dle časové vytíženosti pracoviště, pak je čas
                                 vyhrazen pro objednané pacienty.
                             </p>
                         </div>
@@ -1871,8 +1940,7 @@ mask-size: cover;
                         <p><strong>Linky:</strong> 25</p>
                         <p><strong>Zastávka:</strong> Most, Báňská</p>
                         <p class="note">Zastávka je vedle.</p>
-                        <a href="https://www.dpmost.cz/data/jr_mhd-2026/linka_25.pdf"
-                            class="transport-link">
+                        <a href="https://www.dpmost.cz/data/jr_mhd-2026/linka_25.pdf" class="transport-link">
                             Zobrazit jízdní řád
                         </a>
                     </div>
@@ -1906,22 +1974,27 @@ mask-size: cover;
                 <div class="contact-info">
                     <div class="contact-card">
                         <h4><i class="fas fa-phone"></i> Telefon</h4>
-                        <p>Ordinace &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;777 034 046</p>
-                        </p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;778 494 496</p>
+                        <p>Ordinace
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;777
+                            034 046</p>
+                        </p>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;778
+                        494 496</p>
                         <p>Dentální hygiena &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;770 393 555
-                                            
+
                         </p>
                     </div>
                     <div class="contact-card">
                         <h4><i class="fas fa-envelope"></i> Adresa</h4>
                         <p>Tyršova 3460, 434 01 Most</p>
-                        
+
                     </div>
                     <div class="contact-card">
                         <h4><i class="fas fa-clock"></i> Ordinační hodiny</h4>
                         <p>Po–Pá 7:30–16:00</p>
-                        <p>Bolesti budou ošetřeny od 7:30 do 8:00, dle časové vytíženosti pracoviště, pak je čas vyhrazen pro objednané pacienty.</p>
-                    
+                        <p>Bolesti jsou ošetřeny od 7:30 do 8:00, dle časové vytíženosti pracoviště, pak je čas
+                            vyhrazen pro objednané pacienty.</p>
+
                     </div>
 
                 </div>
@@ -1962,8 +2035,8 @@ mask-size: cover;
                 showSlide(currentIndex);
             }
 
-           document.querySelectorAll('.next').forEach(btn => btn.addEventListener('click', () => { nextSlide(); resetInterval(); }));
-document.querySelectorAll('.prev').forEach(btn => btn.addEventListener('click', () => { prevSlide(); resetInterval(); }));
+            document.querySelectorAll('.next').forEach(btn => btn.addEventListener('click', () => { nextSlide(); resetInterval(); }));
+            document.querySelectorAll('.prev').forEach(btn => btn.addEventListener('click', () => { prevSlide(); resetInterval(); }));
 
             function startInterval() { interval = setInterval(nextSlide, 5000); }
             function resetInterval() { clearInterval(interval); startInterval(); }
@@ -2051,69 +2124,69 @@ document.querySelectorAll('.prev').forEach(btn => btn.addEventListener('click', 
         });
 
         // Добавляем ссылки в nav-links.right
-      function toggleBurgerMenu() {
-  const nav = document.querySelector('nav.container');
-  const burger = document.querySelector('.burger');
-  const rightMenu = document.querySelector('.nav-links.right');
-  const body = document.body;
+        function toggleBurgerMenu() {
+            const nav = document.querySelector('nav.container');
+            const burger = document.querySelector('.burger');
+            const rightMenu = document.querySelector('.nav-links.right');
+            const body = document.body;
 
-  const isActive = nav.classList.toggle('active');
-  burger.classList.toggle('close', isActive);
+            const isActive = nav.classList.toggle('active');
+            burger.classList.toggle('close', isActive);
 
-  if (isActive) {
-    // Отключаем прокрутку страницы
-    body.style.overflow = 'hidden';
+            if (isActive) {
+                // Отключаем прокрутку страницы
+                body.style.overflow = 'hidden';
 
-    // Сохраняем оригинальное содержимое (если не сохранено)
-    if (!rightMenu.dataset.original) {
-      rightMenu.dataset.original = rightMenu.innerHTML;
-    }
+                // Сохраняем оригинальное содержимое (если не сохранено)
+                if (!rightMenu.dataset.original) {
+                    rightMenu.dataset.original = rightMenu.innerHTML;
+                }
 
-    // Добавляем временные пункты меню
-    rightMenu.innerHTML = `
+                // Добавляем временные пункты меню
+                rightMenu.innerHTML = `
       <li><a href="#home">Domů</a></li>
       <li><a href="#services">Služby</a></li>
-      <li><a href="#about">O stomatologii</a></li>
+      <li><a href="#about">Dentální hygiena</a></li>
       
       ${rightMenu.dataset.original}
     `;
 
-    // Добавляем обработчик клика на все ссылки для закрытия меню
-    rightMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', closeMenu);
-    });
-  } else {
-    closeMenu();
-  }
+                // Добавляем обработчик клика на все ссылки для закрытия меню
+                rightMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', closeMenu);
+                });
+            } else {
+                closeMenu();
+            }
 
-  function closeMenu() {
-    nav.classList.remove('active');
-    burger.classList.remove('close');
-    body.style.overflow = '';
+            function closeMenu() {
+                nav.classList.remove('active');
+                burger.classList.remove('close');
+                body.style.overflow = '';
 
-    // Восстанавливаем оригинальное меню
-    if (rightMenu.dataset.original) {
-      rightMenu.innerHTML = rightMenu.dataset.original;
-    }
-  }
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 768) { // при выходе из мобильного режима
-      closeMenu();
-    }
-  });
-}
-// Добавляем функционал “Показать больше / Меньше”:
-  document.addEventListener("DOMContentLoaded", () => {
-    const list = document.querySelector(".price-list");
-    const btn = document.querySelector(".show-more-btn");
+                // Восстанавливаем оригинальное меню
+                if (rightMenu.dataset.original) {
+                    rightMenu.innerHTML = rightMenu.dataset.original;
+                }
+            }
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) { // при выходе из мобильного режима
+                    closeMenu();
+                }
+            });
+        }
+        // Добавляем функционал “Показать больше / Меньше”:
+        document.addEventListener("DOMContentLoaded", () => {
+            const list = document.querySelector(".price-list");
+            const btn = document.querySelector(".show-more-btn");
 
-    btn.addEventListener("click", () => {
-      list.classList.toggle("expanded");
-      btn.textContent = list.classList.contains("expanded")
-        ? "Zobrazit méně"
-        : "Zobrazit více";
-    });
-  });
+            btn.addEventListener("click", () => {
+                list.classList.toggle("expanded");
+                btn.textContent = list.classList.contains("expanded")
+                    ? "Zobrazit méně"
+                    : "Zobrazit více";
+            });
+        });
 
 
 
