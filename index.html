@@ -461,6 +461,18 @@
             margin-bottom: 2rem;
             color: rgb(90, 45, 0);
         }
+        h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    color: rgb(90, 45, 0);
+    position: relative;
+}
+        
 
         h1 {
             font-size: 3rem;
@@ -529,26 +541,29 @@
         }
 
         .hero-content p:first-of-type {
-          font-size: 1.3rem;    /* меньше — не конкурирует с h1 */
-    letter-spacing: 0.15em;
-    text-transform: uppercase; /* элегантный надзаголовок */
-    margin-bottom: 0.4rem;
+            font-size: 1.3rem;
+            /* меньше — не конкурирует с h1 */
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            /* элегантный надзаголовок */
+            margin-bottom: 0.4rem;
 
         }
 
         p:first-of-type::after {
-    /* декоративная линия между надписью и h1 */
-    content: "";
-    display: block;
-    width: 60px; height: 2px;
-    background: rgba(255,255,255,0.6);
-    margin: 0.6rem auto 0;
-}
+            /* декоративная линия между надписью и h1 */
+            content: "";
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.6);
+            margin: 0.6rem auto 0;
+        }
 
         .hero-content h1 {
             font-size: 3.8rem;
             font-weight: 800;
-             margin-bottom: 1.8rem;
+            margin-bottom: 1.8rem;
             color: #fff;
             opacity: 0;
             transform: translateY(20px);
@@ -585,7 +600,7 @@
             transform: translateY(20px);
             animation: fadeUp 1s ease forwards 1.2s;
             margin-top: 5rem;
-             box-shadow: 0 4px 15px rgba(90, 45, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(90, 45, 0, 0.2);
         }
 
 
@@ -692,9 +707,13 @@
 
         .text-container h2 {
             color: #ffffff;
-            font-size: 2.5rem;
-            font-weight: 800;
+            font-size: 2rem;            
         }
+        .text-container p {
+            line-height: 1.6;
+            font-size: 1.2rem;
+        }
+
 
         .text-slide {
             display: none;
@@ -887,7 +906,7 @@
 
         #services h2 {
             font-family: 'Montserrat', sans-serif;
-            font-size: 2.2rem;
+            font-size: 2rem;
             text-align: center;
             margin-bottom: 1rem;
             color: rgb(90, 45, 0);
@@ -1123,12 +1142,18 @@
             padding: 4rem 2rem;
             display: flex;
             flex-direction: column;
-           justify-content: flex-end;   
+            justify-content: flex-start;
             font-size: 1.5rem;
         }
 
         .address-card {
             padding-left: 10rem;
+        }
+        .address-card h2{
+            color: #fff;
+             font-family: 'Montserrat', sans-serif;
+             font-size: 2rem;
+             margin-bottom: 0.5rem;
         }
 
         .address-header {
@@ -1166,14 +1191,11 @@
             }
 
 
-            /* .location-image {
-                min-height: 250px;
-            } */
-
-            .address-container {
-
+                      .address-container {
+               
                 padding: 2rem;
                 text-align: center;
+              
             }
 
             .address-header {
@@ -1376,11 +1398,12 @@
         }
 
         #contact h2 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.2rem;
+           font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
             text-align: center;
             margin-bottom: 1rem;
             color: #ffffff;
+
         }
 
         #contact p {
@@ -1509,12 +1532,86 @@
                 height: 90.5vh;
             }
 
-            @media (max-width: 992px) {
-                .location-section {
-                    height: auto;
-                    /* ← на мобильных высота подстраивается под контент */
-                }
-            }
+              .location-section {
+        height: 100svh;
+        min-height: 100svh;
+    }
+
+    .location-container,
+    .location-info {
+        height: 100%;
+    }
+
+    .location-info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Фото 35% */
+    .location-image {
+        flex: 0 0 35%;
+        height: 35%;
+        min-height: 35%;
+    }
+
+    .location-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+
+        -webkit-mask-image: linear-gradient(
+            to bottom,
+            rgba(0,0,0,1) 70%,
+            rgba(0,0,0,0) 100%
+        );
+
+        mask-image: linear-gradient(
+            to bottom,
+            rgba(0,0,0,1) 70%,
+            rgba(0,0,0,0) 100%
+        );
+    }
+
+    /* Текст 65% */
+    .address-container {
+        flex: 0 0 65%;
+        height: 65%;
+        padding: 1.5rem;
+        justify-content: center;
+        text-align: center;
+        font-size: 1rem;
+    }
+
+    .address-card {
+        padding-left: 0;
+    }
+
+    .address-title {
+        font-size: 1.8rem;
+    }
+
+    .address-container p {
+        font-size: 0.95rem;
+        line-height: 1.4;
+        margin-bottom: 0.5rem;
+    }
+
+    .address-header {
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+
+    .location-container::before {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            to top,
+            rgba(135,85,15,.95) 0%,
+            rgba(135,85,15,.75) 40%,
+            rgba(0,0,0,0) 100%
+        );
+    }
+}
 
             .about-slider-section {
                 flex-direction: column;
@@ -1628,7 +1725,7 @@
             }
 
             h2 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
 
             .about-slider {
@@ -1661,6 +1758,7 @@
             .address-container {
                 font-size: 0.95rem !important;
                 padding: 1.5rem 1rem !important;
+              
             }
 
             .address-container p {
@@ -1698,8 +1796,12 @@
             }
 
             .address-container {
+                
                 font-size: 0.85rem !important;
                 padding: 1rem 0.5rem !important;
+            }
+            .h2{
+                 font-size: 1.5rem !important;
             }
 
             .address-container p {
@@ -1818,43 +1920,16 @@
             <div class="about-slider">
                 <!-- Текстовая часть -->
                 <div class="text-container">
-                    <div class="text-slide active">
-                        <h2>O stomatologii</h2>
-                        <p>Současná stomatologie představuje fascinující spojení moderní vědy, pokročilé technologie a
-                            umění. Na naší klinice aktivně využíváme nejnovější digitální postupy pro dosažení
-                            stoprocentního výsledku a vašeho maximálního pohodlí.</p>
-                    </div>
-
                     <div class="text-slide">
                         <h2>Dentální hygiena</h2>
                         <p>Zdravý úsměv vždy spolehlivě začíná u čistých zubů. Pravidelná profesionální péče u
                             certifikovaného specialisty účinně předchází vzniku kazů i zánětů, odstraňuje pigmentace a
                             tvoří nejlepší základ pro zdraví úst.</p>
                     </div>
-
-                    <div class="text-slide">
-                        <h2>Naše filozofie</h2>
-                        <p>Naše hlavní filozofie pevně spočívá v precizní preventivní péči a zachování přírodních zubů,
-                            kdykoli je to možné. Transparentní komunikace, lidský přístup a férové ceny jsou pro nás
-                            standardem.</p>
-                    </div>
-
-                    <!-- Кнопки управления -->
-                    <div class="slider-buttons">
-                        <button class="prev"><i class="fas fa-chevron-left"></i></button>
-                        <button class="next"><i class="fas fa-chevron-right"></i></button>
-                    </div>
-                </div>
-
-                <div class="slider-buttons-mobile">
-                    <button class="prev"><i class="fas fa-chevron-left"></i></button>
-                    <button class="next"><i class="fas fa-chevron-right"></i></button>
                 </div>
                 <!-- Фото -->
                 <div class="image-container">
-                    <img class="image-slide equal-img active" src="./picture/ordinacie1.jpg" alt="ordinace 1">
                     <img class="image-slide equal-img" src="./picture/ordinacie2.jpg" alt="ordinace 2">
-                    <img class="image-slide equal-img" src="./picture/ordinacie3.jpg" alt="ordinace 3">
                 </div>
             </div>
         </section>
@@ -1901,8 +1976,8 @@
                     <div class="address-container">
                         <div class="address-card">
                             <div class="address-header">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <h3 class="address-title">Přesná adresa</h3>
+                                
+                                <h2>Přesná adresa</h2>
                             </div>
                             <p style="font-size: 1.5rem; text-shadow: 1px 2px 5px rgb(90, 45, 0);">
                                 <strong>Nordic Dental s.r.o. - stomatologická ordinace</strong>
@@ -1913,7 +1988,7 @@
                                 </strong>Ordinace<br> +420 777 034 046<br>
                                 +420 778 494 496<br><br>
                                 Dentální hygiena<br>
-                                 +420770393555<br><br>
+                                +420770393555<br><br>
 
                                 <strong style="text-shadow: 1px 2px 5px rgb(90, 45, 0);">Ordinační hodiny:</strong>
                                 Po–Pá &nbsp;&nbsp; 7:30–16:00<br>
@@ -1930,6 +2005,7 @@
             <div class="map-content">
                 <!-- Левая часть — текст -->
                 <div class="transport-info">
+                    
                     <h3 class="map-title">Jak se k nám dostanete</h3>
 
                     <div class="transport-card">
